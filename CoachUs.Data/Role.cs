@@ -17,13 +17,13 @@ namespace CoachUs.Data.Entities
         public Role()
         {
             this.Permissions = new HashSet<Permission>();
-            this.TeamUsers = new HashSet<TeamUser>();
+            this.Users = new HashSet<TeamUser>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
     
         public virtual ICollection<Permission> Permissions { get; set; }
-        public virtual ICollection<TeamUser> TeamUsers { get; set; }
+        public virtual ICollection<TeamUser> Users { get; set; }
     }
 }

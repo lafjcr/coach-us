@@ -17,15 +17,15 @@ namespace CoachUs.Data.Entities
         public ActivityCategory()
         {
             this.Activities = new HashSet<Activity>();
-            this.ActivityCategories1 = new HashSet<ActivityCategory>();
+            this.ParentActivityCategory = new HashSet<ActivityCategory>();
         }
     
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
-        public int ParentActivityCategoryId { get; set; }
+        public int ParentActivityCategoryID { get; set; }
     
         public virtual ICollection<Activity> Activities { get; set; }
-        public virtual ICollection<ActivityCategory> ActivityCategories1 { get; set; }
-        public virtual ActivityCategory ActivityCategory1 { get; set; }
+        public virtual ICollection<ActivityCategory> ParentActivityCategory { get; set; }
+        public virtual ActivityCategory ChildActivityCategories { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace CoachUs.Data.Entities
         public Training()
         {
             this.Activities = new HashSet<Activity>();
-            this.EventTrainings = new HashSet<EventTraining>();
+            this.Events = new HashSet<EventTraining>();
         }
     
         public int ID { get; set; }
@@ -27,7 +27,7 @@ namespace CoachUs.Data.Entities
         public byte Status { get; set; }
     
         public virtual ICollection<Activity> Activities { get; set; }
-        public virtual ICollection<EventTraining> EventTrainings { get; set; }
+        public virtual ICollection<EventTraining> Events { get; set; }
         public virtual Plan Plan { get; set; }
     }
 }

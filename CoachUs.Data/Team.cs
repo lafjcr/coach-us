@@ -20,8 +20,8 @@ namespace CoachUs.Data.Entities
             this.Fares = new HashSet<Fare>();
             this.Inventories = new HashSet<Inventory>();
             this.Subscriptions = new HashSet<Subscription>();
-            this.TeamPlans = new HashSet<TeamPlan>();
-            this.TeamUsers = new HashSet<TeamUser>();
+            this.Plans = new HashSet<TeamPlan>();
+            this.Users = new HashSet<TeamUser>();
         }
     
         public int ID { get; set; }
@@ -33,11 +33,11 @@ namespace CoachUs.Data.Entities
     
         public virtual ICollection<Event> Events { get; set; }
         public virtual ICollection<Fare> Fares { get; set; }
-        public virtual File File { get; set; }
+        public virtual File Logo { get; set; }
         public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual ICollection<Subscription> Subscriptions { get; set; }
-        public virtual ICollection<TeamPlan> TeamPlans { get; set; }
-        public virtual User User { get; set; }
-        public virtual ICollection<TeamUser> TeamUsers { get; set; }
+        public virtual ICollection<TeamPlan> Plans { get; set; }
+        public virtual User Owner { get; set; }
+        public virtual ICollection<TeamUser> Users { get; set; }
     }
 }

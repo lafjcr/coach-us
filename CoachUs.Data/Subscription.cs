@@ -29,6 +29,6 @@ namespace CoachUs.Data.Entities
     
         public virtual ICollection<SubscriptionPayment> SubscriptionPayments { get; set; }
         public virtual Team Team { get; set; }
-        public virtual User User { get; set; }
+        public virtual User Athlete { get; set; }
     }
 }

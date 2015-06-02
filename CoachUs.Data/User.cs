@@ -17,18 +17,18 @@ namespace CoachUs.Data.Entities
         public User()
         {
             this.AthletePlans = new HashSet<AthletePlan>();
-            this.AthletePlans1 = new HashSet<AthletePlan>();
-            this.AthletePlans2 = new HashSet<AthletePlan>();
+            this.CoachAthletePlans = new HashSet<AthletePlan>();
+            this.SharedAthletePlans = new HashSet<AthletePlan>();
             this.Licenses = new HashSet<License>();
-            this.Plans = new HashSet<Plan>();
-            this.Plans1 = new HashSet<Plan>();
-            this.Sales = new HashSet<Sale>();
-            this.Sales1 = new HashSet<Sale>();
+            this.AuthorPlans = new HashSet<Plan>();
+            this.ModifierPlans = new HashSet<Plan>();
+            this.BuyerSales = new HashSet<Sale>();
+            this.SellerSales = new HashSet<Sale>();
             this.Subscriptions = new HashSet<Subscription>();
-            this.TeamPlans = new HashSet<TeamPlan>();
-            this.TeamPlans1 = new HashSet<TeamPlan>();
-            this.Teams = new HashSet<Team>();
-            this.TeamUsers = new HashSet<TeamUser>();
+            this.CoahTeamPlans = new HashSet<TeamPlan>();
+            this.SharedTeamPlans = new HashSet<TeamPlan>();
+            this.OwnTeams = new HashSet<Team>();
+            this.Teams = new HashSet<TeamUser>();
         }
     
         public int ID { get; set; }
@@ -44,18 +44,18 @@ namespace CoachUs.Data.Entities
         public Nullable<int> PictureID { get; set; }
     
         public virtual ICollection<AthletePlan> AthletePlans { get; set; }
-        public virtual ICollection<AthletePlan> AthletePlans1 { get; set; }
-        public virtual ICollection<AthletePlan> AthletePlans2 { get; set; }
-        public virtual File File { get; set; }
+        public virtual ICollection<AthletePlan> CoachAthletePlans { get; set; }
+        public virtual ICollection<AthletePlan> SharedAthletePlans { get; set; }
+        public virtual File Picture { get; set; }
         public virtual ICollection<License> Licenses { get; set; }
-        public virtual ICollection<Plan> Plans { get; set; }
-        public virtual ICollection<Plan> Plans1 { get; set; }
-        public virtual ICollection<Sale> Sales { get; set; }
-        public virtual ICollection<Sale> Sales1 { get; set; }
+        public virtual ICollection<Plan> AuthorPlans { get; set; }
+        public virtual ICollection<Plan> ModifierPlans { get; set; }
+        public virtual ICollection<Sale> BuyerSales { get; set; }
+        public virtual ICollection<Sale> SellerSales { get; set; }
         public virtual ICollection<Subscription> Subscriptions { get; set; }
-        public virtual ICollection<TeamPlan> TeamPlans { get; set; }
-        public virtual ICollection<TeamPlan> TeamPlans1 { get; set; }
-        public virtual ICollection<Team> Teams { get; set; }
-        public virtual ICollection<TeamUser> TeamUsers { get; set; }
+        public virtual ICollection<TeamPlan> CoahTeamPlans { get; set; }
+        public virtual ICollection<TeamPlan> SharedTeamPlans { get; set; }
+        public virtual ICollection<Team> OwnTeams { get; set; }
+        public virtual ICollection<TeamUser> Teams { get; set; }
     }
 }

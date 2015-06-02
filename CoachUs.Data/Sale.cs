@@ -23,7 +23,7 @@ namespace CoachUs.Data.Entities
         public Nullable<System.DateTime> PaidDate { get; set; }
     
         public virtual Inventory Inventory { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public virtual User Buyer { get; set; }
+        public virtual User Seller { get; set; }
     }
 }

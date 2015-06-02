@@ -28,6 +28,6 @@ namespace CoachUs.Data.Entities
         public short AvailableUsers { get; set; }
     
         public virtual ICollection<LicensePayment> LicensePayments { get; set; }
-        public virtual User User { get; set; }
+        public virtual User Owner { get; set; }
     }
 }

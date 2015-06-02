@@ -16,8 +16,8 @@ namespace CoachUs.Data.Entities
     {
         public Plan()
         {
-            this.AthletePlans = new HashSet<AthletePlan>();
-            this.TeamPlans = new HashSet<TeamPlan>();
+            this.Athletes = new HashSet<AthletePlan>();
+            this.Teams = new HashSet<TeamPlan>();
             this.Trainings = new HashSet<Training>();
         }
     
@@ -30,10 +30,10 @@ namespace CoachUs.Data.Entities
         public int LastModifierID { get; set; }
         public System.DateTime LastModifyDate { get; set; }
     
-        public virtual ICollection<AthletePlan> AthletePlans { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
-        public virtual ICollection<TeamPlan> TeamPlans { get; set; }
+        public virtual ICollection<AthletePlan> Athletes { get; set; }
+        public virtual User Author { get; set; }
+        public virtual User LastModifier { get; set; }
+        public virtual ICollection<TeamPlan> Teams { get; set; }
         public virtual ICollection<Training> Trainings { get; set; }
     }
 }

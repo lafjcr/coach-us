@@ -21,7 +21,7 @@ namespace CoachUs.Data.Entities
     
         public int ID { get; set; }
         public int TrainingID { get; set; }
-        public int ActivityCategoryId { get; set; }
+        public int ActivityCategoryID { get; set; }
         public byte Order { get; set; }
         public byte Series { get; set; }
         public decimal Repetitions { get; set; }

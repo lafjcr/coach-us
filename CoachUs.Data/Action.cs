@@ -16,7 +16,7 @@ namespace CoachUs.Data.Entities
     {
         public Action()
         {
-            this.Actions1 = new HashSet<Action>();
+            this.ChildActions = new HashSet<Action>();
             this.Permissions = new HashSet<Permission>();
         }
     
@@ -25,8 +25,8 @@ namespace CoachUs.Data.Entities
         public string Name { get; set; }
         public byte Type { get; set; }
     
-        public virtual ICollection<Action> Actions1 { get; set; }
-        public virtual Action Action1 { get; set; }
+        public virtual ICollection<Action> ChildActions { get; set; }
+        public virtual Action ParentAction { get; set; }
         public virtual ICollection<Permission> Permissions { get; set; }
     }
 }

@@ -19,9 +19,9 @@ namespace CoachUs.Data.Entities
         public int CoachID { get; set; }
         public int SharedByUser { get; set; }
     
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public virtual User Athlete { get; set; }
+        public virtual User Coach { get; set; }
         public virtual Plan Plan { get; set; }
-        public virtual User User2 { get; set; }
+        public virtual User SharingUser { get; set; }
     }
 }
