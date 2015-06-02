@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CoachUs.Data
+namespace CoachUs.Data.Entities
 {
     using System;
     using System.Collections.Generic;

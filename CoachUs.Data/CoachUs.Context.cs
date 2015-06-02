@@ -12,6 +12,7 @@ namespace CoachUs.Data
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using CoachUs.Data.Entities;
     
     public partial class CoachUsEntities : DbContext
     {
@@ -25,7 +26,7 @@ namespace CoachUs.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Action> Actions { get; set; }
+        public virtual DbSet<CoachUs.Data.Entities.Action> Actions { get; set; }
         public virtual DbSet<Activity> Activities { get; set; }
         public virtual DbSet<ActivityCategory> ActivityCategories { get; set; }
         public virtual DbSet<ActivityResult> ActivityResults { get; set; }

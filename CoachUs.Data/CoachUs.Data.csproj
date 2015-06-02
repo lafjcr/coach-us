@@ -50,91 +50,91 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action.cs">
+    <None Include="Action.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Activity.cs">
+    </None>
+    <None Include="Activity.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ActivityCategory.cs">
+    </None>
+    <None Include="ActivityCategory.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ActivityResult.cs">
+    </None>
+    <None Include="ActivityResult.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AthletePlan.cs">
+    </None>
+    <None Include="AthletePlan.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="CoachUs.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CoachUs.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="CoachUs.cs">
+    <None Include="CoachUs.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="CoachUs.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CoachUs.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Event.cs">
+    <None Include="Event.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EventTraining.cs">
+    </None>
+    <None Include="EventTraining.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Fare.cs">
+    </None>
+    <None Include="Fare.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="File.cs">
+    </None>
+    <None Include="File.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory.cs">
+    </None>
+    <None Include="Inventory.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="License.cs">
+    </None>
+    <None Include="License.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LicensePayment.cs">
+    </None>
+    <None Include="LicensePayment.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Permission.cs">
+    </None>
+    <None Include="Permission.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Plan.cs">
+    </None>
+    <None Include="Plan.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Role.cs">
+    <None Include="Role.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sale.cs">
+    </None>
+    <None Include="Sale.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Subscription.cs">
+    </None>
+    <None Include="Subscription.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubscriptionPayment.cs">
+    </None>
+    <None Include="SubscriptionPayment.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Team.cs">
+    </None>
+    <None Include="Team.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TeamPlan.cs">
+    </None>
+    <None Include="TeamPlan.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TeamUser.cs">
+    </None>
+    <None Include="TeamUser.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Training.cs">
+    </None>
+    <None Include="Training.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
+    </None>
+    <None Include="User.cs">
       <DependentUpon>CoachUs.tt</DependentUpon>
-    </Compile>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="CoachUs.edmx">
@@ -161,6 +161,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoachUs.Data.Entities\CoachUs.Data.Entities.csproj">
+      <Project>{95d10ece-f065-4d17-8ea9-af55e6827d92}</Project>
+      <Name>CoachUs.Data.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
