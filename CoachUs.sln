@@ -11,14 +11,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.WebAPI", "CoachUs.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.WebAPI.Tests", "CoachUs.WebAPI.Tests\CoachUs.WebAPI.Tests.csproj", "{CE156046-91F6-428D-9FDA-56D149313EE9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F2FD3D11-0ED0-4BF7-B6A0-6D6C1952433F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.App.Web", "CoachUs.App.Web\CoachUs.App.Web.csproj", "{0A69047A-CDCE-42C3-8479-B4B6CDB658A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{90D3C873-6568-48A7-B33F-0260657D8D70}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.App.Web", "CoachUs.App.Web\CoachUs.App.Web.csproj", "{0A69047A-CDCE-42C3-8479-B4B6CDB658A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
