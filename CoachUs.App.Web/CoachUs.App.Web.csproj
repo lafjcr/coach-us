@@ -191,6 +191,7 @@
     <Content Include="Content\ace-fonts.css" />
     <Content Include="Content\ace-ie.css" />
     <Content Include="Content\ace-part2.css" />
+    <Content Include="Content\ace-rtl.css" />
     <Content Include="Content\ace.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -199,6 +200,7 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\images\meteorshower2.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
