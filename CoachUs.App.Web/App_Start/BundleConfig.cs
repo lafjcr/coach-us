@@ -30,7 +30,8 @@ namespace CoachUs.App.Web
                         "~/Scripts/jquery.sparkline.js",
                         "~/Scripts/flot/jquery.flot.js",
                         "~/Scripts/flot/jquery.flot.pie.js",
-                        "~/Scripts/flot/jquery.flot.resize.js"));
+                        "~/Scripts/flot/jquery.flot.resize.js",
+                        "~/Scripts/jquery.cookie.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ace").Include(
                         "~/Scripts/ace/elements.scroller.js",
@@ -58,11 +59,17 @@ namespace CoachUs.App.Web
             bundles.Add(new ScriptBundle("~/bundles/ace-extra").Include(
                         "~/Scripts/ace-extra.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/login").Include(
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                         "~/Scripts/knockout-{version}.js",
-                        "~/Scripts/knockout.validation.js",
+                        "~/Scripts/knockout.validation.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/login").Include(
                         "~/Scripts/app/coachus-api.js",
                         "~/Scripts/app/views/login.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/main").Include(
+                        "~/Scripts/app/coachus-api.js",
+                        "~/Scripts/app/views/main.js"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap-css").Include(
                         "~/Content/bootstrap.css",

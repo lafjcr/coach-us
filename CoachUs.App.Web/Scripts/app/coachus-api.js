@@ -66,6 +66,11 @@
         post(self.loginUrl, null, data, doneCallback, failCallback);
     };
 
+    self.logout = function () {
+        sessionStorage.removeItem(tokenKey);
+        $.removeCookie(tokenKey);
+    };
+
     self.getErrors = function (jqXHR) {
         var response = null;
         var errors = [];

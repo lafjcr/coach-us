@@ -246,6 +246,7 @@
     <Content Include="Scripts\ace\elements.wizard.js" />
     <Content Include="Scripts\ace\elements.wysiwyg.js" />
     <Content Include="Scripts\app\coachus-api.js" />
+    <Content Include="Scripts\app\views\main.js" />
     <Content Include="Scripts\app\views\login.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
