@@ -17,5 +17,10 @@ namespace CoachUs.App.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start()
+        {
+            SessionManager.Session = Session;
+        }
     }
 }
