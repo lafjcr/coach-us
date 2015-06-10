@@ -171,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CustomAuthorizeAttribute.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -243,6 +244,8 @@
     <Content Include="Scripts\ace\elements.typeahead.js" />
     <Content Include="Scripts\ace\elements.wizard.js" />
     <Content Include="Scripts\ace\elements.wysiwyg.js" />
+    <Content Include="Scripts\app\coachus-api.js" />
+    <Content Include="Scripts\app\views\login.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\excanvas.js" />
@@ -258,6 +261,7 @@
     <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui.custom.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.easypiechart.js" />
     <Content Include="Scripts\jquery.mobile.custom.js" />
     <Content Include="Scripts\jquery.sparkline.js" />
@@ -267,6 +271,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\jquery1x.js" />
+    <Content Include="Scripts\knockout-3.3.0.debug.js" />
+    <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\knockout.validation.debug.js" />
+    <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
@@ -1450,6 +1458,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoachUs.WebAPI.Client\CoachUs.WebAPI.Client.csproj">
+      <Project>{ec7383a9-4370-4d63-9775-97a1bd3fca92}</Project>
+      <Name>CoachUs.WebAPI.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoachUs.WebAPI.Models\CoachUs.WebAPI.Models.csproj">
+      <Project>{7a282e82-c55e-4380-ac2e-8739bd4c49a2}</Project>
+      <Name>CoachUs.WebAPI.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

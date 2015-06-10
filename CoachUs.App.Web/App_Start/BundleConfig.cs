@@ -56,14 +56,20 @@ namespace CoachUs.App.Web
                         "~/Scripts/ace/ace.searchbox-autocomplete.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ace-extra").Include(
-                      "~/Scripts/ace-extra.js"));
+                        "~/Scripts/ace-extra.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/login").Include(
+                        "~/Scripts/knockout-{version}.js",
+                        "~/Scripts/knockout.validation.js",
+                        "~/Scripts/app/coachus-api.js",
+                        "~/Scripts/app/views/login.js"));
 
             bundles.Add(new StyleBundle("~/Content/bootstrap-css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/css/font-awesome.css"));
+                        "~/Content/bootstrap.css",
+                        "~/Content/css/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/site").Include(
-                      "~/Content/site.css"));
+                        "~/Content/site.css"));
         }
     }
 }

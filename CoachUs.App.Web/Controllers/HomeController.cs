@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CoachUs.App.Web.Controllers
 {
+    [CustomAuthorizeAttribute()]
     public class HomeController : Controller
     {
         public ActionResult Index()
