@@ -336,10 +336,10 @@
 						<!-- #section:basics/navbar.user_menu -->
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="/template/assets/avatars/user.jpg" alt="Jason's Photo" />
+                                <img class="nav-user-photo" src="/template/assets/avatars/user.jpg" alt="@SessionManager.Username's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									@SessionManager.Username
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -1033,9 +1033,12 @@
 							</div><!-- /.ace-settings-box -->
 						</div><!-- /.ace-settings-container -->
 
-						<div>
-                            @RenderBody()
-                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                @RenderBody()
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
@@ -1094,7 +1097,7 @@
         <script src="/Scripts/bootstrap.js"></script>
 
 		<!-- page specific plugin scripts -->
-        @RenderSection("page-scripts", required: false)
+        @RenderSection("page_scripts", required: false)
 
 		<!--[if lte IE 8]>
 		  <script src="/Scripts/excanvas.js"></script>
@@ -1105,7 +1108,6 @@
         @Scripts.Render("~/bundles/ace")		
 
 		<!-- inline scripts related to this page -->
-        @RenderSection("page-inlinescripts", required: false)
-        @RenderSection("page-scripts", required: false)
+        @RenderSection("page_inlinescripts", required: false)
 	</body>
 </html>

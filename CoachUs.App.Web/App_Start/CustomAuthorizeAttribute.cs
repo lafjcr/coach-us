@@ -22,6 +22,9 @@ namespace CoachUs.App.Web
 
             // TODO: Verify user role
 
+            SessionManager.User = userInfo.Email;
+            //httpContext.Session["CoachUs-Role"] = userInfo.Email;
+
             return true;
             //return base.AuthorizeCore(httpContext);
         }
