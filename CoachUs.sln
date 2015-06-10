@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{90D3C8
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.WebAPI.Models", "CoachUs.WebAPI.Models\CoachUs.WebAPI.Models.csproj", "{7A282E82-C55E-4380-AC2E-8739BD4C49A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.WebAPI.Client", "CoachUs.WebAPI.Client\CoachUs.WebAPI.Client.csproj", "{EC7383A9-4370-4D63-9775-97A1BD3FCA92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,14 @@ Global
 		{0A69047A-CDCE-42C3-8479-B4B6CDB658A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A69047A-CDCE-42C3-8479-B4B6CDB658A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A69047A-CDCE-42C3-8479-B4B6CDB658A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A282E82-C55E-4380-AC2E-8739BD4C49A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A282E82-C55E-4380-AC2E-8739BD4C49A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A282E82-C55E-4380-AC2E-8739BD4C49A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A282E82-C55E-4380-AC2E-8739BD4C49A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC7383A9-4370-4D63-9775-97A1BD3FCA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC7383A9-4370-4D63-9775-97A1BD3FCA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC7383A9-4370-4D63-9775-97A1BD3FCA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC7383A9-4370-4D63-9775-97A1BD3FCA92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
