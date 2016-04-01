@@ -15,7 +15,7 @@ namespace CoachUs.App.Web
 
         public static string Username
         {
-            get { return User.Substring(0, User.IndexOf("@")); }            
+            get { return User.IndexOf("@") > 0 ? User.Substring(0, User.IndexOf("@")) : User; }
         }
 
         public static string UserRole
