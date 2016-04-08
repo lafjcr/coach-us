@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -39,73 +39,73 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\CoachUs.Data\Action.cs">
+    <Compile Include="..\CoachUs.Data.Old\Action.cs">
       <Link>Action.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Activity.cs">
+    <Compile Include="..\CoachUs.Data.Old\Activity.cs">
       <Link>Activity.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\ActivityCategory.cs">
+    <Compile Include="..\CoachUs.Data.Old\ActivityCategory.cs">
       <Link>ActivityCategory.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\ActivityResult.cs">
+    <Compile Include="..\CoachUs.Data.Old\ActivityResult.cs">
       <Link>ActivityResult.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\AthletePlan.cs">
+    <Compile Include="..\CoachUs.Data.Old\AthletePlan.cs">
       <Link>AthletePlan.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Event.cs">
+    <Compile Include="..\CoachUs.Data.Old\Event.cs">
       <Link>Event.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\EventTraining.cs">
+    <Compile Include="..\CoachUs.Data.Old\EventTraining.cs">
       <Link>EventTraining.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Fare.cs">
+    <Compile Include="..\CoachUs.Data.Old\Fare.cs">
       <Link>Fare.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\File.cs">
+    <Compile Include="..\CoachUs.Data.Old\File.cs">
       <Link>File.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Inventory.cs">
+    <Compile Include="..\CoachUs.Data.Old\Inventory.cs">
       <Link>Inventory.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\License.cs">
+    <Compile Include="..\CoachUs.Data.Old\License.cs">
       <Link>License.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\LicensePayment.cs">
+    <Compile Include="..\CoachUs.Data.Old\LicensePayment.cs">
       <Link>LicensePayment.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Permission.cs">
+    <Compile Include="..\CoachUs.Data.Old\Permission.cs">
       <Link>Permission.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Plan.cs">
+    <Compile Include="..\CoachUs.Data.Old\Plan.cs">
       <Link>Plan.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Role.cs">
+    <Compile Include="..\CoachUs.Data.Old\Role.cs">
       <Link>Role.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Sale.cs">
+    <Compile Include="..\CoachUs.Data.Old\Sale.cs">
       <Link>Sale.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Subscription.cs">
+    <Compile Include="..\CoachUs.Data.Old\Subscription.cs">
       <Link>Subscription.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\SubscriptionPayment.cs">
+    <Compile Include="..\CoachUs.Data.Old\SubscriptionPayment.cs">
       <Link>SubscriptionPayment.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Team.cs">
+    <Compile Include="..\CoachUs.Data.Old\Team.cs">
       <Link>Team.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\TeamPlan.cs">
+    <Compile Include="..\CoachUs.Data.Old\TeamPlan.cs">
       <Link>TeamPlan.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\TeamUser.cs">
+    <Compile Include="..\CoachUs.Data.Old\TeamUser.cs">
       <Link>TeamUser.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\Training.cs">
+    <Compile Include="..\CoachUs.Data.Old\Training.cs">
       <Link>Training.cs</Link>
     </Compile>
-    <Compile Include="..\CoachUs.Data\User.cs">
+    <Compile Include="..\CoachUs.Data.Old\User.cs">
       <Link>User.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
