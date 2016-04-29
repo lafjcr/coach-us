@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -1460,16 +1461,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CoachUs.WebAPI.Client\CoachUs.WebAPI.Client.csproj">
-      <Project>{ec7383a9-4370-4d63-9775-97a1bd3fca92}</Project>
-      <Name>CoachUs.WebAPI.Client</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CoachUs.WebAPI.Models\CoachUs.WebAPI.Models.csproj">
-      <Project>{7a282e82-c55e-4380-ac2e-8739bd4c49a2}</Project>
-      <Name>CoachUs.WebAPI.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
