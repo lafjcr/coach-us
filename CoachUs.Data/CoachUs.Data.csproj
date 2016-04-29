@@ -62,9 +62,9 @@
     <Compile Include="Configurations\UserDetailConfiguration.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201604291930329_initial_migration.cs" />
-    <Compile Include="Migrations\201604291930329_initial_migration.Designer.cs">
-      <DependentUpon>201604291930329_initial_migration.cs</DependentUpon>
+    <Compile Include="Migrations\201604292235128_Initial.cs" />
+    <Compile Include="Migrations\201604292235128_Initial.Designer.cs">
+      <DependentUpon>201604292235128_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,8 +85,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604291930329_initial_migration.resx">
-      <DependentUpon>201604291930329_initial_migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604292235128_Initial.resx">
+      <DependentUpon>201604292235128_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

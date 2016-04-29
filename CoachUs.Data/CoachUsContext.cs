@@ -1,5 +1,6 @@
 ﻿using CoachUs.Data.Configurations;
 using CoachUs.Data.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -13,7 +14,9 @@ namespace CoachUs.Data
             Database.SetInitializer<CoachUsContext>(null);
         }
 
-        public IDbSet<User> UserSet { get; set; }
+        public IDbSet<User> Users { get; set; }
+        public IDbSet<IdentityRole> Roles { get; set; }
+        public IDbSet<IdentityUserRole> UserRoles { get; set; }
 
         public virtual void Commit()
         {
