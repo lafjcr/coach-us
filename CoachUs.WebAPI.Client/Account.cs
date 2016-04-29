@@ -10,7 +10,7 @@ namespace CoachUs.WebAPI.Client
     {
         private const string hostUrlKey = "coachus-api";
         private const string apiTokenUrl = "Token";
-        private const string apiUserInfoUrl = "api/Account/UserInfo";
+        private const string apiUserInfoUrl = "Account/UserInfo";
 
         private static readonly string host;
 

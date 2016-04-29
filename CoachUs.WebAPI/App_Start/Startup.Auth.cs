@@ -36,7 +36,7 @@ namespace CoachUs.WebAPI
                 TokenEndpointPath = new PathString("/Token"),
                 //Provider = new ApplicationOAuthProvider(PublicClientId, UserManagerFactory),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
-                AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
+                AuthorizeEndpointPath = new PathString("/Account/ExternalLogin"),
                 //AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
                 AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(expire),
                 RefreshTokenProvider = new ApplicationRefreshTokenProvider(expire),
@@ -84,7 +84,8 @@ namespace CoachUs.WebAPI
             //};
 
             // Enable the application to use bearer tokens to authenticate users
-            app.UseOAuthBearerTokens(OAuthOptions);
+            //app.UseOAuthBearerTokens(OAuthOptions);
+            app.UseOAuthAuthorizationServer(OAuthOptions);
             OAuthBearerAuthenticationExtensions.UseOAuthBearerAuthentication(app, OAuthBearerOptions);
 
             // Uncomment the following lines to enable logging in with third party login providers
@@ -136,9 +137,10 @@ namespace CoachUs.WebAPI
         public override Task ValidateIdentity(OAuthValidateIdentityContext context)
         {
             var claims = context.Ticket.Identity.Claims;
+            var allowIssuers = new List<string> { "Facebook", "LOCAL_AUTHORITY", "LOCAL AUTHORITY" };
             foreach (var claim in context.Ticket.Identity.Claims)
-            {
-                if (claim.Issuer != "Facebook" && claim.Issuer != "LOCAL_AUTHORITY")
+            {                
+                if (!allowIssuers.Contains(claim.Issuer))
                     context.Rejected();
             }
             return Task.FromResult<object>(null);

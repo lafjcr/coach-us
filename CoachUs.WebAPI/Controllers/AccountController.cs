@@ -16,11 +16,13 @@ using Microsoft.Owin.Security.OAuth;
 using CoachUs.WebAPI.Models;
 using CoachUs.WebAPI.Providers;
 using CoachUs.WebAPI.Results;
+using CoachUs.Services;
+using System.Linq;
 
 namespace CoachUs.WebAPI.Controllers
 {
-    [Authorize]
-    [RoutePrefix("api/Account")]
+    [CustomAuthorizeAttribute()]
+    [RoutePrefix("Account")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
