@@ -70,6 +70,10 @@
     <Compile Include="Migrations\201605022341344_Set_PluralizingTableNameConvention_false.Designer.cs">
       <DependentUpon>201605022341344_Set_PluralizingTableNameConvention_false.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605030127472_Set_Indexes.cs" />
+    <Compile Include="Migrations\201605030127472_Set_Indexes.Designer.cs">
+      <DependentUpon>201605030127472_Set_Indexes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Repositories\EntityBaseRepository.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605022341344_Set_PluralizingTableNameConvention_false.resx">
       <DependentUpon>201605022341344_Set_PluralizingTableNameConvention_false.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605030127472_Set_Indexes.resx">
+      <DependentUpon>201605030127472_Set_Indexes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

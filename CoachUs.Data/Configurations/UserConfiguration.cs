@@ -1,6 +1,8 @@
 ﻿using CoachUs.Common.Data;
 using CoachUs.Data.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Infrastructure.Annotations;
 
 namespace CoachUs.Data.Configurations
 {
@@ -10,6 +12,10 @@ namespace CoachUs.Data.Configurations
         {
             ToTable("AspNetUsers");
             HasKey(e => e.Id);
+            Property(t => t.UserName)
+                .HasMaxLength(256)
+                .HasColumnAnnotation("Index",
+                    new IndexAnnotation(new IndexAttribute()));
             Property(e => e.UserDetailId).IsOptional();
             HasMany(e => e.Roles).WithRequired().HasForeignKey(ur => ur.UserId);
         }
@@ -22,6 +28,10 @@ namespace CoachUs.Data.Configurations
             ToTable("AspNetRoles");
             HasKey(e => e.Id);
             HasMany(e => e.Users).WithRequired().HasForeignKey(ur => ur.RoleId);
+            Property(t => t.Name)
+                .HasMaxLength(256)
+                .HasColumnAnnotation("Index",
+                    new IndexAnnotation(new IndexAttribute()));
         }
     }
 
