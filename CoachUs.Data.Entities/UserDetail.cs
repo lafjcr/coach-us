@@ -1,4 +1,5 @@
 ﻿using CoachUs.Common.Data;
+using CoachUs.Common.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -27,8 +28,8 @@ namespace CoachUs.Data.Entities
         public string Name { get; set; }
         public string LastName { get; set; }
         public System.DateTime BirthDate { get; set; }
-        public string Gender { get; set; }
-        public string Laterality { get; set; }
+        public Gender Gender { get; set; }
+        public Laterality Laterality { get; set; }
         public string Country { get; set; }
         public string Address { get; set; }
         public Nullable<int> PictureID { get; set; }
