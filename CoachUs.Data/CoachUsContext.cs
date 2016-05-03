@@ -25,7 +25,7 @@ namespace CoachUs.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             // Identity
             modelBuilder.Configurations.Add(new IdentityUserRoleConfiguration());
