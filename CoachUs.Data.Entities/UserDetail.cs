@@ -28,11 +28,36 @@ namespace CoachUs.Data.Entities
         public string Name { get; set; }
         public string LastName { get; set; }
         public System.DateTime BirthDate { get; set; }
-        public Gender Gender { get; set; }
-        public Laterality Laterality { get; set; }
+        public string Gender { get; set; }
+        public string Laterality { get; set; }
         public string Country { get; set; }
         public string Address { get; set; }
         public Nullable<int> PictureID { get; set; }
+
+
+        public Gender GenderValue
+        {
+            get
+            {
+                return (Gender) Gender[0];
+            }
+            set
+            {
+                Gender = ((char)value).ToString();
+            }
+        }
+
+        public Laterality LateralityValue
+        {
+            get
+            {
+                return (Laterality)Laterality[0];
+            }
+            set
+            {
+                Laterality = ((char)value).ToString();
+            }
+        }
 
         //public virtual ICollection<AthletePlan> AthletePlans { get; set; }
         //public virtual ICollection<AthletePlan> CoachAthletePlans { get; set; }

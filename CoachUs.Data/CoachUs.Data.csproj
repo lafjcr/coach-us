@@ -74,9 +74,9 @@
     <Compile Include="Migrations\201605030127472_Set_Indexes.Designer.cs">
       <DependentUpon>201605030127472_Set_Indexes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605030204464_Set_Enums.cs" />
-    <Compile Include="Migrations\201605030204464_Set_Enums.Designer.cs">
-      <DependentUpon>201605030204464_Set_Enums.cs</DependentUpon>
+    <Compile Include="Migrations\201605062303253_Set_Enums.cs" />
+    <Compile Include="Migrations\201605062303253_Set_Enums.Designer.cs">
+      <DependentUpon>201605062303253_Set_Enums.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,8 +106,8 @@
     <EmbeddedResource Include="Migrations\201605030127472_Set_Indexes.resx">
       <DependentUpon>201605030127472_Set_Indexes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605030204464_Set_Enums.resx">
-      <DependentUpon>201605030204464_Set_Enums.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605062303253_Set_Enums.resx">
+      <DependentUpon>201605062303253_Set_Enums.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
