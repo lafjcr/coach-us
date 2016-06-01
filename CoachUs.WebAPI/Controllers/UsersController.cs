@@ -1,39 +1,50 @@
-﻿using System;
+﻿using CoachUs.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace CoachUs.WebAPI.Controllers
 {
-    public class UsersController : ApiController
+    //[CustomAuthorizeAttribute]
+    [RoutePrefix("Users")]
+    public class UsersController : CoachUsController
     {
         // GET: api/Users
-        public IEnumerable<string> Get()
+        public IEnumerable<UserModel> Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = CoachUsServices.UsersService.GetUsers();
+            return result;
         }
 
         // GET: api/Users/5
-        public string Get(int id)
+        public IHttpActionResult Get(string id)
         {
-            return "value";
+            var result = CoachUsServices.UsersService.GetUser(id);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
         }
 
         // POST: api/Users
-        public void Post([FromBody]string value)
+        public UserModel Post([FromBody]UserModel model)
         {
+            var result = CoachUsServices.UsersService.AddUser(model);
+            return result;
         }
 
         // PUT: api/Users/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(string id, [FromBody]UserModel model)
         {
+            CoachUsServices.UsersService.UpdateUser(id, model);
+            return Ok();
         }
 
         // DELETE: api/Users/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(string id)
         {
+            CoachUsServices.UsersService.DeleteUser(id);
+            return Ok();
         }
     }
 }

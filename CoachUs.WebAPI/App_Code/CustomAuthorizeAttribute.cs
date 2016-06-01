@@ -41,11 +41,18 @@ namespace CoachUs.WebAPI
 
         private bool AuthorizeRequest(HttpActionContext actionContext)
         {
-            var token = actionContext.Request.Headers.GetValues(tokenKey);
-            if (token == null)
-                return false;
+            //var token = actionContext.Request.Headers.GetValues(tokenKey);
+            //if (token == null)
+            //    return false;
 
-            return true;
+            var result = false;
+            try
+            {
+                result = actionContext.RequestContext.Principal.Identity.IsAuthenticated;
+            }
+            catch { }
+
+            return result;
         }
     }
 }

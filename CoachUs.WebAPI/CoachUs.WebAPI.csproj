@@ -266,6 +266,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CoachUsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -368,6 +369,10 @@
     <ProjectReference Include="..\CoachUs.Data.Entities\CoachUs.Data.Entities.csproj">
       <Project>{b0523c0f-6f35-4bde-8ef2-75757d2bf248}</Project>
       <Name>CoachUs.Data.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CoachUs.Models\CoachUs.Models.csproj">
+      <Project>{5D7D446E-05D3-4583-BAC4-6B438838F275}</Project>
+      <Name>CoachUs.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\CoachUs.Services\CoachUs.Services.csproj">
       <Project>{b2ef94f0-633c-4755-a367-faeca6efa26d}</Project>
