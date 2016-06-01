@@ -14,6 +14,15 @@ namespace CoachUs.Common.Data.Repositories
 
         private DbContext dataContext;
 
+        //public EntityBaseRepository(IDbFactory<DbContext> dbFactory)
+        //{
+        //    DbFactory = dbFactory;
+        //}
+        public EntityBaseRepository(IUnitOfWork unitOfWork)
+        {
+            UnitOfWork = unitOfWork;
+        }
+
         #region Properties
         protected IDbFactory<DbContext> DbFactory
         {
@@ -33,14 +42,6 @@ namespace CoachUs.Common.Data.Repositories
         {
             //get { return dataContext ?? (dataContext = DbFactory.Init()); }
             get { return dataContext ?? (dataContext = UnitOfWork.DbContext); }
-        }
-        //public EntityBaseRepository(IDbFactory<DbContext> dbFactory)
-        //{
-        //    DbFactory = dbFactory;
-        //}
-        public EntityBaseRepository(IUnitOfWork unitOfWork)
-        {
-            UnitOfWork = unitOfWork;
         }
         #endregion
 
