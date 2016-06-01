@@ -1,0 +1,59 @@
+﻿using CoachUs.Common.Data.Infrastructure;
+using CoachUs.Common.Data.Repositories;
+using CoachUs.Data;
+using CoachUs.Data.Entities;
+using CoachUs.Data.Infrastructure;
+using CoachUs.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CoachUs.Services
+{
+    public class Services
+    {
+        IUnitOfWork unitOfWork = null;
+        IUsersService usersService = null;
+        IRolesService rolesService = null;        
+
+        string CallerUserId { get; set; }
+        //UserModel CallerUser { get; set; }
+
+        public Services(string userId)
+        {
+            CallerUserId = userId;
+            //CallerUser = UsersService.GetUser(userId);
+
+            var dbFactory = new DbFactory();
+            unitOfWork = new UnitOfWork<CoachUsContext>(dbFactory);
+        }
+
+        public IUsersService UsersService
+        {
+            get
+            {
+                return usersService ?? new UsersService(IsAdmin, unitOfWork);
+            }
+        }
+
+        public IRolesService RolesService
+        {
+            get
+            {
+                return rolesService ?? new RolesService(unitOfWork);
+            }
+        }
+
+
+        bool IsAdmin
+        {
+            get
+            {
+                var adminRole = RolesService.GetRole(RolesEnum.Admin.ToString());
+                return adminRole.Users.Any(i => i.UserId == CallerUserId);
+            }
+        }
+    }
+}

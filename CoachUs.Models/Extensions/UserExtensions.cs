@@ -1,26 +1,36 @@
 ﻿using CoachUs.Data.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoachUs.Models
 {
     public static class UserExtensions
     {
-        public static UserModel ToModel(this User entity)
+        public static UserModel ToModel(this User entity, UserModel result = null)
         {
-            var result = new UserModel();
+            if (entity == null) return null;
+            result = result ?? new UserModel();
+
             result.Id = entity.Id;
-            result.Username = entity.UserName;
+            result.UserName = entity.UserName;
+
             return result;
         }
 
-        public static List<UserModel> ToModelList(this List<User> entities)
+        public static ICollection<UserModel> ToModelList(this ICollection<User> entities)
         {
-            var result = new List<UserModel>();
-            entities.ForEach(i => result.Add(i.ToModel()));
+            if (entities == null) return null;
+            return entities.Select(item => item.ToModel()).ToList();
+        }
+
+        public static User ToEntity(this UserModel model, User result = null)
+        {
+            if (model == null) return null;
+            result = result ?? new User();
+
+            result.Id = model.Id;
+            result.UserName = model.UserName;
+
             return result;
         }
     }

@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.Data", "CoachUs.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.Services", "CoachUs.Services\CoachUs.Services.csproj", "{B2EF94F0-633C-4755-A367-FAECA6EFA26D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoachUs.Models", "CoachUs.Models\CoachUs.Models.csproj", "{5D7D446E-05D3-4583-BAC4-6B438838F275}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{B2EF94F0-633C-4755-A367-FAECA6EFA26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2EF94F0-633C-4755-A367-FAECA6EFA26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2EF94F0-633C-4755-A367-FAECA6EFA26D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D7D446E-05D3-4583-BAC4-6B438838F275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D7D446E-05D3-4583-BAC4-6B438838F275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D7D446E-05D3-4583-BAC4-6B438838F275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D7D446E-05D3-4583-BAC4-6B438838F275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
