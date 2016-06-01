@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoachUs.Common.Data.Infrastructure
+namespace CoachUs.Common
 {
     public class Disposable : IDisposable
     {

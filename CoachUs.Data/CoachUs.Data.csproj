@@ -61,7 +61,6 @@
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Configurations\UserDetailConfiguration.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
-    <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Migrations\201604292235128_Initial.cs" />
     <Compile Include="Migrations\201604292235128_Initial.Designer.cs">
       <DependentUpon>201604292235128_Initial.cs</DependentUpon>
@@ -80,7 +79,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Repositories\EntityBaseRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoachUs.Common\CoachUs.Common.csproj">

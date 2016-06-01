@@ -1,4 +1,5 @@
-﻿using CoachUs.Common.Data.Infrastructure;
+﻿using CoachUs.Common;
+using CoachUs.Common.Data.Infrastructure;
 
 namespace CoachUs.Data.Infrastructure
 {

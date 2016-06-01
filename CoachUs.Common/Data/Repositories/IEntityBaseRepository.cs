@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
@@ -6,13 +7,11 @@ namespace CoachUs.Common.Data.Repositories
 {
     public interface IEntityBaseRepository<T> where T : class//, IEntityBase, new()
     {
-        IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties);
-        IQueryable<T> All { get; }
-        IQueryable<T> GetAll();
-        //T GetSingle(ints id);
-        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
-        void Add(T entity);
-        void Delete(T entity);
-        void Edit(T entity);
+        IDbSet<T> DbSet { get; }
+        IQueryable<T> Get(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "");
+        T GetById(object id);
+        T Insert(T entity);
+        void Update(T entity);
+        void Delete(T entity);        
     }
 }

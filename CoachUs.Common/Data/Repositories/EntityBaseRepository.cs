@@ -1,80 +1,116 @@
 ﻿using CoachUs.Common.Data.Infrastructure;
 using System;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace CoachUs.Common.Data.Repositories
 {
-    public class EntityBaseRepository<C, T> : IEntityBaseRepository<T>
-            where C : DbContext
+    //public class EntityBaseRepository<C, T> : IEntityBaseRepository<T>
+    public class EntityBaseRepository<T> : IEntityBaseRepository<T>
+            //where C : DbContext
             where T : class//, IEntityBase, new()
     {
 
-        private C dataContext;
+        private DbContext dataContext;
 
         #region Properties
-        protected IDbFactory<C> DbFactory
+        protected IDbFactory<DbContext> DbFactory
         {
             get;
             private set;
         }
 
-        protected C DbContext
+        protected IUnitOfWork UnitOfWork
         {
-            get { return dataContext ?? (dataContext = DbFactory.Init()); }
+            get;
+            private set;
         }
-        public EntityBaseRepository(IDbFactory<C> dbFactory)
+
+
+
+        protected DbContext DbContext
         {
-            DbFactory = dbFactory;
+            //get { return dataContext ?? (dataContext = DbFactory.Init()); }
+            get { return dataContext ?? (dataContext = UnitOfWork.DbContext); }
+        }
+        //public EntityBaseRepository(IDbFactory<DbContext> dbFactory)
+        //{
+        //    DbFactory = dbFactory;
+        //}
+        public EntityBaseRepository(IUnitOfWork unitOfWork)
+        {
+            UnitOfWork = unitOfWork;
         }
         #endregion
-        public virtual IQueryable<T> GetAll()
+
+        public virtual IQueryable<T> Get(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string includeProperties = "")
         {
-            return DbContext.Set<T>();
-        }
-        public virtual IQueryable<T> All
-        {
-            get
+            IQueryable<T> query = DbSet;
+
+            if (filter != null)
             {
-                return GetAll();
+                query = query.Where(filter);
             }
-        }
-        public virtual IQueryable<T> AllIncluding(params Expression<Func<T, object>>[] includeProperties)
-        {
-            IQueryable<T> query = DbContext.Set<T>();
-            foreach (var includeProperty in includeProperties)
+
+            foreach (var includeProperty in includeProperties.Split
+                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 query = query.Include(includeProperty);
             }
-            return query;
-        }
-        //public T GetSingle(int id)
-        //{
-        //    return GetAll().FirstOrDefault(x => x.Id == id);
-        //}
-        public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
-        {
-            return GetAll().Where(predicate);
+
+            if (orderBy != null)
+            {
+                return orderBy(query);
+            }
+            else
+            {
+                return query;
+            }
         }
 
-        public virtual void Add(T entity)
+        public virtual IDbSet<T> DbSet
         {
-            //DbEntityEntry dbEntityEntry = DbContext.Entry<T>(entity);
-            DbContext.Set<T>().Add(entity);
+            get
+            {
+                return DbContext.Set<T>();
+            }
         }
-        public virtual void Edit(T entity)
+
+        public T GetById(object id)
         {
-            DbEntityEntry dbEntityEntry = DbContext.Entry<T>(entity);
+            return DbSet.Find(id);
+        }
+
+        public virtual T Insert(T entity)
+        {
+            //var dbEntityEntry = DbContext.Entry<T>(entity);
+            //dbEntityEntry.State = EntityState.Added;
+            //var result = dbEntityEntry.Entity;
+            var result = DbSet.Add(entity);
+            //DbContext.SaveChanges();
+            return result;
+        }
+        public virtual void Update(T entity)
+        {
+            var dbEntityEntry = DbContext.Entry<T>(entity);
             dbEntityEntry.State = EntityState.Modified;
+            //DbContext.SaveChanges();
         }
         public virtual void Delete(T entity)
         {
-            DbEntityEntry dbEntityEntry = DbContext.Entry<T>(entity);
-            dbEntityEntry.State = EntityState.Deleted;
+            //var dbEntityEntry = DbContext.Entry<T>(entity);
+            //dbEntityEntry.State = EntityState.Deleted;
 
-            //DbContext.Set<T>().Remove(entity);
+            if (DbContext.Entry(entity).State == EntityState.Detached)
+            {
+                DbSet.Attach(entity);
+            }
+            DbSet.Remove(entity);
+            //DbContext.SaveChanges();
         }
     }
 }
