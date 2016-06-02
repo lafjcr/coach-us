@@ -1,5 +1,7 @@
 ﻿using CoachUs.Models;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Web.Http;
 
 namespace CoachUs.WebAPI.Controllers
@@ -9,42 +11,114 @@ namespace CoachUs.WebAPI.Controllers
     public class UsersController : CoachUsController
     {
         // GET: api/Users
-        public IEnumerable<UserModel> Get()
+        public IHttpActionResult Get()
         {
-            var result = CoachUsServices.UsersService.GetUsers();
-            return result;
+            try
+            {
+                var result = CoachUsServices.UsersService.GetUsers();
+                return Ok(result);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // GET: api/Users/5
         public IHttpActionResult Get(string id)
         {
-            var result = CoachUsServices.UsersService.GetUser(id);
-            if (result == null)
+            try
             {
-                return NotFound();
+                var result = CoachUsServices.UsersService.GetUser(id);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
             }
-            return Ok(result);
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // POST: api/Users
-        public UserModel Post([FromBody]UserModel model)
+        public IHttpActionResult Post([FromBody]UserModel model)
         {
-            var result = CoachUsServices.UsersService.AddUser(model);
-            return result;
+            try
+            {
+                var result = CoachUsServices.UsersService.AddUser(model);
+                return Ok(result);
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (ArgumentException)
+            {
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // PUT: api/Users/5
         public IHttpActionResult Put(string id, [FromBody]UserModel model)
         {
-            CoachUsServices.UsersService.UpdateUser(id, model);
-            return Ok();
+            try
+            {
+                model.Id = id;
+                CoachUsServices.UsersService.UpdateUser(model);
+                return Ok();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (ArgumentException)
+            {
+                return BadRequest();
+            }
+            catch (ObjectNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
 
         // DELETE: api/Users/5
         public IHttpActionResult Delete(string id)
         {
-            CoachUsServices.UsersService.DeleteUser(id);
-            return Ok();
+            try
+            {
+                CoachUsServices.UsersService.DeleteUser(id);
+                return Ok();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (ObjectNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
         }
     }
 }

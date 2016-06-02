@@ -8,7 +8,7 @@ namespace CoachUs.Services
         IEnumerable<UserModel> GetUsers();
         UserModel GetUser(string id);
         UserModel AddUser(UserModel model);
-        void UpdateUser(string id, UserModel model);
+        void UpdateUser(UserModel model);
         void DeleteUser(string id);
     }
 }

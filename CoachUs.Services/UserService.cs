@@ -7,6 +7,7 @@ using CoachUs.Data.Infrastructure;
 using CoachUs.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,16 +30,22 @@ namespace CoachUs.Services
         {
             ICollection<UserModel> result = null;
             if (IsAdmin)
+            {
                 result = repository.Get().ToList().ToModelList();
-            return result;
+                return result;
+            }
+            throw new UnauthorizedAccessException();
         }
 
         public UserModel GetUser(string id)
         {
             UserModel result = null;
             if (IsAdmin)
+            {
                 result = repository.GetById(id).ToModel();
-            return result;
+                return result;
+            }
+            throw new UnauthorizedAccessException();
         }
 
         /// <summary>
@@ -50,6 +57,8 @@ namespace CoachUs.Services
         {
             if (IsAdmin)
             {
+                if (model == null)
+                    throw new ArgumentNullException("model");
                 var user = model.ToEntity();
                 user.Id = model.Id ?? Guid.NewGuid().ToString();
                 user.PasswordHash = "AGxd3a+TeF3CNTr6PMh5kQiT4T8tKqgRlwXDANi4AExIQSG1QegV/IDxCOA3UyIcAw==";
@@ -61,22 +70,36 @@ namespace CoachUs.Services
                 model = user.ToModel();                
                 return model;
             }
-            return null;
+            throw new UnauthorizedAccessException();
         }
 
-        public void UpdateUser(string id, UserModel model)
+        public void UpdateUser(UserModel model)
         {
-            var entity = repository.GetById(id);
-            entity = model.ToEntity(entity);
-            repository.Update(entity);
-            Commit();
+            if (IsAdmin)
+            {
+                if (model == null)
+                    throw new ArgumentNullException("model");
+                var entity = repository.GetById(model.Id);
+                if (entity == null)
+                    throw new ObjectNotFoundException();
+                entity = model.ToEntity(entity);
+                repository.Update(entity);
+                Commit();
+            }
+            throw new UnauthorizedAccessException();
         }
 
         public void DeleteUser(string id)
         {
-            var entity = repository.GetById(id);
-            repository.Delete(entity);
-            Commit();
+            if (IsAdmin)
+            {
+                var entity = repository.GetById(id);
+                if (entity == null)
+                    throw new ObjectNotFoundException();
+                repository.Delete(entity);
+                Commit();
+            }
+            throw new UnauthorizedAccessException();
         }
     }
 }
