@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201605062303253_Set_Enums.Designer.cs">
       <DependentUpon>201605062303253_Set_Enums.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606032029530_UserDetails_Changes.cs" />
+    <Compile Include="Migrations\201606032029530_UserDetails_Changes.Designer.cs">
+      <DependentUpon>201606032029530_UserDetails_Changes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605062303253_Set_Enums.resx">
       <DependentUpon>201605062303253_Set_Enums.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606032029530_UserDetails_Changes.resx">
+      <DependentUpon>201606032029530_UserDetails_Changes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

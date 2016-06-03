@@ -11,9 +11,9 @@ namespace CoachUs.Data.Configurations
             Property(u => u.Id).IsRequired();
             Property(u => u.Name).IsRequired().HasMaxLength(100);
             Property(u => u.LastName).IsRequired().HasMaxLength(100);
-            Property(u => u.BirthDate).IsRequired();
-            Property(u => u.Gender).IsRequired().HasMaxLength(1).IsFixedLength().IsUnicode(false);
-            Property(u => u.Laterality).IsRequired().HasMaxLength(1).IsFixedLength().IsUnicode(false);
+            Property(u => u.BirthDate).IsOptional();
+            Property(u => u.Gender).IsOptional().HasMaxLength(1).IsFixedLength().IsUnicode(false);
+            Property(u => u.Laterality).IsOptional().HasMaxLength(1).IsFixedLength().IsUnicode(false);
             Property(u => u.Country).IsRequired().HasMaxLength(100);
             Property(u => u.Address).IsRequired().HasMaxLength(150);
             Property(u => u.PictureID).IsOptional();

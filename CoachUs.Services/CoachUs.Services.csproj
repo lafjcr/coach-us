@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallerUserInfo.cs" />
     <Compile Include="Interfaces\IUsersService.cs" />
     <Compile Include="Interfaces\IRolesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -16,25 +16,24 @@ namespace CoachUs.Services
     {
         IUnitOfWork unitOfWork = null;
         IUsersService usersService = null;
-        IRolesService rolesService = null;        
+        IRolesService rolesService = null;
 
-        string CallerUserId { get; set; }
+        readonly CallerUserInfo callerUserInfo;
         //UserModel CallerUser { get; set; }
 
         public Services(string userId)
         {
-            CallerUserId = userId;
-            //CallerUser = UsersService.GetUser(userId);
-
             var dbFactory = new DbFactory();
             unitOfWork = new UnitOfWork<CoachUsContext>(dbFactory);
+
+            callerUserInfo = new CallerUserInfo(userId, RolesService);
         }
 
         public IUsersService UsersService
         {
             get
             {
-                return usersService ?? new UsersService(IsAdmin, unitOfWork);
+                return usersService ?? new UsersService(callerUserInfo, unitOfWork);
             }
         }
 
@@ -43,16 +42,6 @@ namespace CoachUs.Services
             get
             {
                 return rolesService ?? new RolesService(unitOfWork);
-            }
-        }
-
-
-        bool IsAdmin
-        {
-            get
-            {
-                var adminRole = RolesService.GetRole(RolesEnum.Admin.ToString());
-                return adminRole.Users.Any(i => i.UserId == CallerUserId);
             }
         }
     }

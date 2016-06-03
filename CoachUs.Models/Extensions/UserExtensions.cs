@@ -28,8 +28,8 @@ namespace CoachUs.Models
             if (model == null) return null;
             result = result ?? new User();
 
-            result.Id = model.Id;
-            result.UserName = model.UserName;
+            result.Id = result.Id ?? model.Id;
+            result.Email = result.UserName = model.UserName;
 
             return result;
         }

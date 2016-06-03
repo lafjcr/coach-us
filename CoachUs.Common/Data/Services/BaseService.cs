@@ -8,7 +8,7 @@ namespace CoachUs.Common.Data.Services
             //where C : CoachUsContext
             where T : class//, IEntityBase, new()
     {
-        IUnitOfWork unitOfWork = null;
+        readonly IUnitOfWork unitOfWork = null;
         protected EntityBaseRepository<T> repository;
 
         //public BaseService(IDbFactory<C> dbFactory)

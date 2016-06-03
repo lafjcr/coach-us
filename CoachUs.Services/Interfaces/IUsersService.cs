@@ -10,5 +10,8 @@ namespace CoachUs.Services
         UserModel AddUser(UserModel model);
         void UpdateUser(UserModel model);
         void DeleteUser(string id);
+
+        UserDetailModel GetUserDetails(string id);
+        void SaveUserDetails(UserDetailModel model);
     }
 }

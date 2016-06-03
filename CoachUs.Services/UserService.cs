@@ -18,18 +18,19 @@ namespace CoachUs.Services
     {
         //EntityBaseRepository<CoachUsContext, User> userRepository = new EntityBaseRepository<CoachUsContext, User>(new DbFactory());
 
-        bool IsAdmin { get; set; }
+        readonly CallerUserInfo callerUserInfo;
 
         //public UserService(IDbFactory<CoachUsContext> dbFactory) : base(dbFactory)
-        public UsersService(bool isAdmin, IUnitOfWork unitOfWork) : base(unitOfWork)
+        public UsersService(CallerUserInfo callerUserInfo, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            IsAdmin = isAdmin;
+            this.callerUserInfo = callerUserInfo;
         }
 
+        #region Users
         public IEnumerable<UserModel> GetUsers()
         {
             ICollection<UserModel> result = null;
-            if (IsAdmin)
+            if (callerUserInfo.IsAdmin)
             {
                 result = repository.Get().ToList().ToModelList();
                 return result;
@@ -40,7 +41,7 @@ namespace CoachUs.Services
         public UserModel GetUser(string id)
         {
             UserModel result = null;
-            if (IsAdmin)
+            if (callerUserInfo.IsAdmin)
             {
                 result = repository.GetById(id).ToModel();
                 return result;
@@ -55,7 +56,7 @@ namespace CoachUs.Services
         /// <returns></returns>
         public UserModel AddUser(UserModel model)
         {
-            if (IsAdmin)
+            if (callerUserInfo.IsAdmin)
             {
                 if (model == null)
                     throw new ArgumentNullException("model");
@@ -75,7 +76,7 @@ namespace CoachUs.Services
 
         public void UpdateUser(UserModel model)
         {
-            if (IsAdmin)
+            if (callerUserInfo.IsAdmin)
             {
                 if (model == null)
                     throw new ArgumentNullException("model");
@@ -86,12 +87,12 @@ namespace CoachUs.Services
                 repository.Update(entity);
                 Commit();
             }
-            throw new UnauthorizedAccessException();
+            else throw new UnauthorizedAccessException();
         }
 
         public void DeleteUser(string id)
         {
-            if (IsAdmin)
+            if (callerUserInfo.IsAdmin)
             {
                 var entity = repository.GetById(id);
                 if (entity == null)
@@ -99,7 +100,46 @@ namespace CoachUs.Services
                 repository.Delete(entity);
                 Commit();
             }
+            else throw new UnauthorizedAccessException();
+        }
+        #endregion
+
+        #region UserDetails
+        public UserDetailModel GetUserDetails(string id)
+        {
+            if (callerUserInfo.IsAdmin || callerUserInfo.UserId == id)
+            {
+                //var result = new UserDetailModel();
+
+                var entity = repository.GetById(id);
+                if (entity == null)
+                    throw new ObjectNotFoundException();
+
+                var result = entity.UserDetail.ToModel();
+                result.UserId = entity.Id;
+                result.PhoneNumber = entity.PhoneNumber;
+                return result;
+            }
             throw new UnauthorizedAccessException();
         }
+
+        public void SaveUserDetails(UserDetailModel model)
+        {
+            if (model == null)
+                throw new ArgumentNullException("model");
+
+            if (model.UserId != callerUserInfo.UserId)
+                throw new UnauthorizedAccessException();
+
+            var entity = repository.GetById(model.UserId);
+            if (entity == null)
+                throw new ObjectNotFoundException();
+
+            entity.UserDetail = model.ToEntity(entity.UserDetail);
+            entity.PhoneNumber = model.PhoneNumber;
+            repository.Update(entity);
+            Commit();
+        }
+        #endregion
     }
 }
