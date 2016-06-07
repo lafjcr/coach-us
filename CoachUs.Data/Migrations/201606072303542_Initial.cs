@@ -12,9 +12,10 @@ namespace CoachUs.Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(),
+                        Name = c.String(maxLength: 256),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .Index(t => t.Name);
             
             CreateTable(
                 "dbo.AspNetUserRoles",
@@ -34,7 +35,6 @@ namespace CoachUs.Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        UserDetailId = c.Int(),
                         Email = c.String(),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -45,11 +45,10 @@ namespace CoachUs.Data.Migrations
                         LockoutEndDateUtc = c.DateTime(),
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(),
+                        UserName = c.String(maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.UserDetail", t => t.UserDetailId)
-                .Index(t => t.UserDetailId);
+                .Index(t => t.UserName);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -76,37 +75,20 @@ namespace CoachUs.Data.Migrations
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
-            CreateTable(
-                "dbo.UserDetail",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 100),
-                        LastName = c.String(nullable: false, maxLength: 100),
-                        BirthDate = c.DateTime(nullable: false),
-                        Gender = c.String(nullable: false, maxLength: 1),
-                        Laterality = c.String(nullable: false, maxLength: 1),
-                        Country = c.String(nullable: false, maxLength: 100),
-                        Address = c.String(nullable: false, maxLength: 150),
-                        PictureID = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUsers", "UserDetailId", "dbo.UserDetail");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", new[] { "UserDetailId" });
+            DropIndex("dbo.AspNetUsers", new[] { "UserName" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropTable("dbo.UserDetail");
+            DropIndex("dbo.AspNetRoles", new[] { "Name" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");

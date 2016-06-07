@@ -7,13 +7,13 @@ namespace CoachUs.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Set_Enums : IMigrationMetadata
+    public sealed partial class Initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Set_Enums));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605062303253_Set_Enums"; }
+            get { return "201606072303542_Initial"; }
         }
         
         string IMigrationMetadata.Source

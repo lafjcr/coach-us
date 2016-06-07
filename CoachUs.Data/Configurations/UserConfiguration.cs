@@ -16,8 +16,8 @@ namespace CoachUs.Data.Configurations
                 .HasMaxLength(256)
                 .HasColumnAnnotation("Index",
                     new IndexAnnotation(new IndexAttribute()));
-            Property(e => e.UserDetailId).IsOptional();
             HasMany(e => e.Roles).WithRequired().HasForeignKey(ur => ur.UserId);
+            HasOptional(e => e.UserDetail).WithRequired(ur => ur.User);
         }
     }
 

@@ -23,8 +23,6 @@ namespace CoachUs.Models
         public Laterality Laterality { get; set; }
         public string Country { get; set; }
         public string Address { get; set; }
-        public Nullable<int> PictureID { get; set; }
-
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

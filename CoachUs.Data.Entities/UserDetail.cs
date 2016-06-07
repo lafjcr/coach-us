@@ -24,7 +24,7 @@ namespace CoachUs.Data.Entities
             //this.Teams = new HashSet<TeamUser>();
         }
 
-        public int Id { get; set; }
+        public string UserId { get; set; }
         public string Name { get; set; }
         public string LastName { get; set; }
         public System.DateTime BirthDate { get; set; }
@@ -32,7 +32,6 @@ namespace CoachUs.Data.Entities
         public string Laterality { get; set; }
         public string Country { get; set; }
         public string Address { get; set; }
-        public Nullable<int> PictureID { get; set; }
 
 
         public Gender GenderValue
@@ -59,6 +58,7 @@ namespace CoachUs.Data.Entities
             }
         }
 
+        public virtual User User { get; set; }
         //public virtual ICollection<AthletePlan> AthletePlans { get; set; }
         //public virtual ICollection<AthletePlan> CoachAthletePlans { get; set; }
         //public virtual ICollection<AthletePlan> SharedAthletePlans { get; set; }

@@ -7,13 +7,13 @@ namespace CoachUs.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Set_PluralizingTableNameConvention_false : IMigrationMetadata
+    public sealed partial class Create_UserDetails : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Set_PluralizingTableNameConvention_false));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Create_UserDetails));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605022341344_Set_PluralizingTableNameConvention_false"; }
+            get { return "201606072339344_Create_UserDetails"; }
         }
         
         string IMigrationMetadata.Source

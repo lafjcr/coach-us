@@ -109,15 +109,15 @@ namespace CoachUs.Services
         {
             if (callerUserInfo.IsAdmin || callerUserInfo.UserId == id)
             {
-                //var result = new UserDetailModel();
-
                 var entity = repository.GetById(id);
                 if (entity == null)
                     throw new ObjectNotFoundException();
 
                 var result = entity.UserDetail.ToModel();
+                result = result ?? new UserDetailModel();
                 result.UserId = entity.Id;
                 result.PhoneNumber = entity.PhoneNumber;
+
                 return result;
             }
             throw new UnauthorizedAccessException();

@@ -61,25 +61,13 @@
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Configurations\UserDetailConfiguration.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
-    <Compile Include="Migrations\201604292235128_Initial.cs" />
-    <Compile Include="Migrations\201604292235128_Initial.Designer.cs">
-      <DependentUpon>201604292235128_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201606072303542_Initial.cs" />
+    <Compile Include="Migrations\201606072303542_Initial.Designer.cs">
+      <DependentUpon>201606072303542_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605022341344_Set_PluralizingTableNameConvention_false.cs" />
-    <Compile Include="Migrations\201605022341344_Set_PluralizingTableNameConvention_false.Designer.cs">
-      <DependentUpon>201605022341344_Set_PluralizingTableNameConvention_false.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605030127472_Set_Indexes.cs" />
-    <Compile Include="Migrations\201605030127472_Set_Indexes.Designer.cs">
-      <DependentUpon>201605030127472_Set_Indexes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605062303253_Set_Enums.cs" />
-    <Compile Include="Migrations\201605062303253_Set_Enums.Designer.cs">
-      <DependentUpon>201605062303253_Set_Enums.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201606032029530_UserDetails_Changes.cs" />
-    <Compile Include="Migrations\201606032029530_UserDetails_Changes.Designer.cs">
-      <DependentUpon>201606032029530_UserDetails_Changes.cs</DependentUpon>
+    <Compile Include="Migrations\201606072339344_Create_UserDetails.cs" />
+    <Compile Include="Migrations\201606072339344_Create_UserDetails.Designer.cs">
+      <DependentUpon>201606072339344_Create_UserDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,20 +87,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604292235128_Initial.resx">
-      <DependentUpon>201604292235128_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606072303542_Initial.resx">
+      <DependentUpon>201606072303542_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605022341344_Set_PluralizingTableNameConvention_false.resx">
-      <DependentUpon>201605022341344_Set_PluralizingTableNameConvention_false.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605030127472_Set_Indexes.resx">
-      <DependentUpon>201605030127472_Set_Indexes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605062303253_Set_Enums.resx">
-      <DependentUpon>201605062303253_Set_Enums.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201606032029530_UserDetails_Changes.resx">
-      <DependentUpon>201606032029530_UserDetails_Changes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606072339344_Create_UserDetails.resx">
+      <DependentUpon>201606072339344_Create_UserDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

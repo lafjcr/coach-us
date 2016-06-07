@@ -11,7 +11,7 @@ namespace CoachUs.Models
             if (entity == null) return null;
             result = result ?? new UserDetailModel();
 
-            //result.UserId = entity.Id;
+            result.UserId = entity.UserId;
             result.Name = entity.Name;
             result.LastName = entity.LastName;
             result.BirthDate = entity.BirthDate;
@@ -19,7 +19,6 @@ namespace CoachUs.Models
             result.Laterality = entity.LateralityValue;
             result.Country = entity.Country;
             result.Address = entity.Address;
-            result.PictureID = entity.PictureID;
 
             return result;
         }
@@ -35,7 +34,7 @@ namespace CoachUs.Models
             if (model == null) return null;
             result = result ?? new UserDetail();
 
-            //result.Id = result.Id ?? model.UserId;
+            result.UserId = result.UserId ?? model.UserId;
             result.Name = model.Name;
             result.LastName = model.LastName;
             result.BirthDate = model.BirthDate;
@@ -43,7 +42,6 @@ namespace CoachUs.Models
             result.LateralityValue = model.Laterality;
             result.Country = model.Country;
             result.Address = model.Address;
-            result.PictureID = model.PictureID;
 
             return result;
         }
