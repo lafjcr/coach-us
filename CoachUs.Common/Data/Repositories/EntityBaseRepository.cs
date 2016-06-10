@@ -113,5 +113,10 @@ namespace CoachUs.Common.Data.Repositories
             DbSet.Remove(entity);
             //DbContext.SaveChanges();
         }
+
+        public virtual void LoadReference(T entity, Expression<Func<T, object>> navigationProperty)
+        {
+            DbContext.Entry<T>(entity).Reference(navigationProperty).Load();
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace CoachUs.Common.Data.Repositories
         T GetById(object id);
         T Insert(T entity);
         void Update(T entity);
-        void Delete(T entity);        
+        void Delete(T entity);
+        void LoadReference(T entity, Expression<Func<T, object>> navigationProperty);
     }
 }
