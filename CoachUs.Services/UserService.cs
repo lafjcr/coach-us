@@ -41,7 +41,7 @@ namespace CoachUs.Services
         public UserModel GetUser(string id)
         {
             UserModel result = null;
-            if (callerUserInfo.IsAdmin)
+            if (callerUserInfo.IsAdmin || callerUserInfo.UserId == id)
             {
                 result = repository.GetById(id).ToModel();
                 return result;
@@ -60,15 +60,17 @@ namespace CoachUs.Services
             {
                 if (model == null)
                     throw new ArgumentNullException("model");
-                var user = model.ToEntity();
-                user.Id = model.Id ?? Guid.NewGuid().ToString();
-                user.PasswordHash = "AGxd3a+TeF3CNTr6PMh5kQiT4T8tKqgRlwXDANi4AExIQSG1QegV/IDxCOA3UyIcAw==";
-                user.Email = user.UserName;
-                user.SecurityStamp = "9828d4db-cf13-49b9-a395-344bc00a5af4";
 
-                user = repository.Insert(user);
+                var entity = model.ToEntity();
+                entity.Id = model.Id ?? Guid.NewGuid().ToString();
+                entity.PasswordHash = "AGxd3a+TeF3CNTr6PMh5kQiT4T8tKqgRlwXDANi4AExIQSG1QegV/IDxCOA3UyIcAw==";
+                entity.Email = entity.UserName;
+                entity.SecurityStamp = "9828d4db-cf13-49b9-a395-344bc00a5af4";
+
+                entity = repository.Insert(entity);
                 Commit();
-                model = user.ToModel();                
+
+                model = entity.ToModel();
                 return model;
             }
             throw new UnauthorizedAccessException();
