@@ -267,6 +267,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CoachUsController.cs" />
+    <Compile Include="Controllers\LicensesController.cs" />
     <Compile Include="Controllers\UserDetailsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

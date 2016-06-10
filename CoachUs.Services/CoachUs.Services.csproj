@@ -58,10 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CallerUserInfo.cs" />
+    <Compile Include="Interfaces\ILicenseService.cs" />
     <Compile Include="Interfaces\IUsersService.cs" />
     <Compile Include="Interfaces\IRolesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RolesEnum.cs" />
+    <Compile Include="LicensesService.cs" />
     <Compile Include="Services.cs" />
     <Compile Include="RolesService.cs" />
     <Compile Include="UserService.cs" />

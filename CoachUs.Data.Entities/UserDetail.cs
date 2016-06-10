@@ -9,10 +9,11 @@ namespace CoachUs.Data.Entities
     {
         public UserDetail()
         {
+            this.Licenses = new HashSet<License>();
+
             //this.AthletePlans = new HashSet<AthletePlan>();
             //this.CoachAthletePlans = new HashSet<AthletePlan>();
             //this.SharedAthletePlans = new HashSet<AthletePlan>();
-            //this.Licenses = new HashSet<License>();
             //this.AuthorPlans = new HashSet<Plan>();
             //this.ModifierPlans = new HashSet<Plan>();
             //this.BuyerSales = new HashSet<Sale>();
@@ -59,11 +60,13 @@ namespace CoachUs.Data.Entities
         }
 
         public virtual User User { get; set; }
+        public virtual ICollection<License> Licenses { get; set; }
+
+
         //public virtual ICollection<AthletePlan> AthletePlans { get; set; }
         //public virtual ICollection<AthletePlan> CoachAthletePlans { get; set; }
         //public virtual ICollection<AthletePlan> SharedAthletePlans { get; set; }
         //public virtual File Picture { get; set; }
-        //public virtual ICollection<License> Licenses { get; set; }
         //public virtual ICollection<Plan> AuthorPlans { get; set; }
         //public virtual ICollection<Plan> ModifierPlans { get; set; }
         //public virtual ICollection<Sale> BuyerSales { get; set; }

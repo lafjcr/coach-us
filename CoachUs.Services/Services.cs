@@ -17,6 +17,7 @@ namespace CoachUs.Services
         IUnitOfWork unitOfWork = null;
         IUsersService usersService = null;
         IRolesService rolesService = null;
+        ILicenseService licensesService = null;
 
         readonly CallerUserInfo callerUserInfo;
         //UserModel CallerUser { get; set; }
@@ -42,6 +43,14 @@ namespace CoachUs.Services
             get
             {
                 return rolesService ?? new RolesService(unitOfWork);
+            }
+        }
+
+        public ILicenseService LicensesService
+        {
+            get
+            {
+                return licensesService ?? new LicensesService(callerUserInfo, unitOfWork);
             }
         }
     }
