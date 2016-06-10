@@ -11,13 +11,9 @@ namespace CoachUs.Models
             if (entity == null) return null;
             result = result ?? new UserDetailModel();
 
-            result.UserId = entity.UserId;
-            result.Name = entity.Name;
-            result.LastName = entity.LastName;
+            result = entity.ToBaseModel(result as UserDetailBaseModel) as UserDetailModel;
             result.BirthDate = entity.BirthDate;
-            result.Gender = entity.GenderValue;
             result.Laterality = entity.LateralityValue;
-            result.Country = entity.Country;
             result.Address = entity.Address;
 
             return result;
@@ -27,6 +23,27 @@ namespace CoachUs.Models
         {
             if (entities == null) return null;
             return entities.Select(item => item.ToModel()).ToList();
+        }
+
+        public static UserDetailBaseModel ToBaseModel(this UserDetail entity, UserDetailBaseModel result = null)
+        {
+            if (entity == null) return null;
+            result = result ?? new UserDetailBaseModel();
+
+            result.UserId = entity.UserId;
+            result.Name = entity.Name;
+            result.LastName = entity.LastName;
+            result.Gender = entity.GenderValue;
+            result.Country = entity.Country;
+            result.PhoneNumber = entity.User != null ? entity.User.PhoneNumber : result.PhoneNumber;
+
+            return result;
+        }
+
+        public static ICollection<UserDetailBaseModel> ToBaseModelList(this ICollection<UserDetail> entities)
+        {
+            if (entities == null) return null;
+            return entities.Select(item => item.ToBaseModel()).ToList();
         }
 
         public static UserDetail ToEntity(this UserDetailModel model, UserDetail result = null)
@@ -44,6 +61,34 @@ namespace CoachUs.Models
             result.Address = model.Address;
 
             return result;
+        }
+
+
+        public static UserDetailReferenceResponseModel ToReferenceModel(this UserDetail entity, UserDetailReferenceResponseModel result = null)
+        {
+            if (entity == null) return null;
+            result = result ?? new UserDetailReferenceResponseModel();
+
+            result.UserId = entity.UserId;
+            result.Name = entity.Name;
+            result.LastName = entity.LastName;
+            result.Gender = entity.GenderValue;
+            result.Country = entity.Country;
+            result.Address = entity.Address;
+
+            if (entity.User != null)
+            {
+                result.Email = entity.User.Email;
+                result.PhoneNumber = entity.User.PhoneNumber;
+            }
+
+            return result;
+        }
+
+        public static ICollection<UserDetailReferenceResponseModel> ToReferenceModelList(this ICollection<UserDetail> entities)
+        {
+            if (entities == null) return null;
+            return entities.Select(item => item.ToReferenceModel()).ToList();
         }
     }
 }
