@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CoachUs.Data.Entities
 {
-    public class UserDetail// : IEntityBase
+    public class UserDetail : IEntityBase
     {
         public UserDetail()
         {
@@ -23,6 +23,19 @@ namespace CoachUs.Data.Entities
             //this.SharedTeamPlans = new HashSet<TeamPlan>();
             //this.OwnTeams = new HashSet<Team>();
             //this.Teams = new HashSet<TeamUser>();
+        }
+
+        public int Id
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public string UserId { get; set; }

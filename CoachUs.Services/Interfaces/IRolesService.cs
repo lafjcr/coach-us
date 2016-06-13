@@ -1,11 +1,12 @@
 ﻿using System.Linq;
 using Microsoft.AspNet.Identity.EntityFramework;
+using CoachUs.Data.Entities;
 
 namespace CoachUs.Services
 {
     public interface IRolesService
     {
-        IdentityRole GetRole(string name);
-        IQueryable<IdentityRole> GetRoles();
+        Role GetRole(string name);
+        IQueryable<Role> GetRoles();
     }
 }

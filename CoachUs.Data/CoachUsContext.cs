@@ -15,7 +15,7 @@ namespace CoachUs.Data
         }
 
         public IDbSet<User> Users { get; set; }
-        public IDbSet<IdentityRole> Roles { get; set; }
+        public IDbSet<Role> Roles { get; set; }
         public IDbSet<IdentityUserRole> UserRoles { get; set; }
         public IDbSet<License> Licenses { get; set; }
 

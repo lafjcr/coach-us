@@ -21,7 +21,7 @@ namespace CoachUs.Data.Configurations
         }
     }
 
-    public class IdentityRoleConfiguration : EntityBaseConfiguration<IdentityRole>
+    public class IdentityRoleConfiguration : EntityBaseConfiguration<Role>
     {
         public IdentityRoleConfiguration()
         {

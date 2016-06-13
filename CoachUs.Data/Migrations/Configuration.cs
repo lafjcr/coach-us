@@ -21,24 +21,24 @@ namespace CoachUs.Data.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            var adminRole = new IdentityRole
+            var adminRole = new Role
             {
                 Id = "24c0707d-65cb-4132-8bf5-4553867807c0",
                 Name = "Admin"
             };
             context.Roles.AddOrUpdate(
               adminRole,
-              new IdentityRole
+              new Role
               {
                   Id = "71ee6a88-e893-49fd-96ea-69f46d225825",
                   Name = "Owner"
               },
-              new IdentityRole
+              new Role
               {
                   Id = "8197518b-228b-41f9-b143-bfb8d7346db9",
                   Name = "Coach"
               },
-              new IdentityRole
+              new Role
               {
                   Id = "bce8c54c-c2e5-44aa-9ab9-b1aa6b10a851",
                   Name = "Athlete"
@@ -56,7 +56,7 @@ namespace CoachUs.Data.Migrations
 
             context.Users.AddOrUpdate(adminUser);
 
-            context.UserRoles.Add(
+            context.UserRoles.AddOrUpdate(
                 new IdentityUserRole
                 {
                     UserId = adminUser.Id,

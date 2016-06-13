@@ -16,6 +16,7 @@ namespace CoachUs.Data.Configurations
             Property(u => u.Country).IsRequired().HasMaxLength(100);
             Property(u => u.Address).IsRequired().HasMaxLength(150);
 
+            Ignore(u => u.Id);
             Ignore(u => u.GenderValue);
             Ignore(u => u.LateralityValue);
         }

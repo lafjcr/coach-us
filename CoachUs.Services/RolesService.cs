@@ -5,18 +5,18 @@ using System.Linq;
 
 namespace CoachUs.Services
 {
-    class RolesService : BaseService<IdentityRole>, IRolesService
+    class RolesService : BaseService<Role>, IRolesService
     {
         public RolesService(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
         }
 
-        public IQueryable<IdentityRole> GetRoles()
+        public IQueryable<Role> GetRoles()
         {
             return MainRepository.Get();
         }
 
-        public IdentityRole GetRole(string name)
+        public Role GetRole(string name)
         {
             return MainRepository.Get(i => i.Name == name).SingleOrDefault();
         }

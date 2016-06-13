@@ -4,10 +4,8 @@ using System;
 
 namespace CoachUs.Data.Entities
 {
-    public class User : IdentityUser, IEntityBase
+    public class Role : IdentityRole, IEntityBase
     {
-        public virtual UserDetail UserDetail { get; set; }
-
         int IEntityBase.Id
         {
             get
