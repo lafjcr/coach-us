@@ -15,5 +15,11 @@ namespace CoachUs.WebAPI.Controllers
                 return coachUsServices ?? new Services.Services(User.Identity.GetUserId());
             }
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            CoachUsServices.Dispose();
+            base.Dispose(disposing);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace CoachUs.Common.Data.Infrastructure
 {
@@ -21,6 +22,12 @@ namespace CoachUs.Common.Data.Infrastructure
         public void Commit()
         {
             DbContext.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            dbFactory.Dispose();
+            dbContext.Dispose();
         }
     }
 }

@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CoachUs.Services
 {
-    public class Services
+    public class Services : IDisposable
     {
         IUnitOfWork unitOfWork = null;
         IUsersService usersService = null;
@@ -20,7 +20,6 @@ namespace CoachUs.Services
         ILicenseService licensesService = null;
 
         readonly CallerUserInfo callerUserInfo;
-        //UserModel CallerUser { get; set; }
 
         public Services(string userId)
         {
@@ -52,6 +51,11 @@ namespace CoachUs.Services
             {
                 return licensesService ?? new LicensesService(callerUserInfo, unitOfWork);
             }
+        }
+
+        public void Dispose()
+        {
+            unitOfWork.Dispose();
         }
     }
 }
