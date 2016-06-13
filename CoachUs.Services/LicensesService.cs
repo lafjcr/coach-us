@@ -18,6 +18,7 @@ namespace CoachUs.Services
         public LicensesService(CallerUserInfo callerUserInfo, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this.callerUserInfo = callerUserInfo;
+            AddRepository<LicensePackage>();
         }
 
         public IEnumerable<LicenseResponseModel> GetLicenses()
@@ -25,8 +26,7 @@ namespace CoachUs.Services
             ICollection<LicenseResponseModel> result = null;
             if (callerUserInfo.IsAdmin)
             {
-                result = repository.Get().ToList().ToModelList();
-                var result2 = repository.Get().GroupBy(i => i.Owner).ToList();
+                result = MainRepository.Get().ToList().ToModelList();
                 return result;
             }
             throw new UnauthorizedAccessException();
@@ -37,7 +37,7 @@ namespace CoachUs.Services
             ICollection<LicenseGroupedResponseModel> result = null;
             if (callerUserInfo.IsAdmin)
             {
-                result = repository.Get().GroupBy(i => i.Owner).ToList().ToModelList();
+                result = MainRepository.Get().GroupBy(i => i.Owner).ToList().ToModelList();
                 return result;
             }
             throw new UnauthorizedAccessException();
@@ -48,7 +48,7 @@ namespace CoachUs.Services
             LicenseResponseModel result = null;
             if (callerUserInfo.IsAdmin)
             {
-                result = repository.GetById(id).ToModel();
+                result = MainRepository.GetById(id).ToModel();
                 return result;
             }
             throw new UnauthorizedAccessException();
@@ -68,9 +68,9 @@ namespace CoachUs.Services
                 var entity = model.ToEntity();
                 entity.CreatedDate = DateTime.UtcNow;
 
-                entity = repository.Insert(entity);
+                entity = MainRepository.Insert(entity);
                 Commit();
-                repository.LoadReference(entity, e => e.Owner);
+                MainRepository.LoadReference(entity, e => e.Owner);
 
                 var result = entity.ToModel();
                 return result;
@@ -85,12 +85,12 @@ namespace CoachUs.Services
                 if (model == null)
                     throw new ArgumentNullException("model");
 
-                var entity = repository.GetById(model.Id);
+                var entity = MainRepository.GetById(model.Id);
                 if (entity == null)
                     throw new ObjectNotFoundException();
 
                 entity = model.ToEntity(entity);
-                repository.Update(entity);
+                MainRepository.Update(entity);
                 Commit();
             }
             else throw new UnauthorizedAccessException();

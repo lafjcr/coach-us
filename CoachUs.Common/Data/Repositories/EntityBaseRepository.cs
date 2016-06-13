@@ -1,18 +1,31 @@
 ﻿using CoachUs.Common.Data.Infrastructure;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace CoachUs.Common.Data.Repositories
 {
+    public abstract class BaseRepository
+    {
+        public abstract Type Type { get; }
+    }
+
     //public class EntityBaseRepository<C, T> : IEntityBaseRepository<T>
-    public class EntityBaseRepository<T> : IEntityBaseRepository<T>
+    public class EntityBaseRepository<T> : BaseRepository, IEntityBaseRepository<T>
             //where C : DbContext
-            where T : class//, IEntityBase, new()
+            where T : class, IEntityBase//, new()
     {
 
         private DbContext dataContext;
+
+        //public T Value { get; set; }
+
+        public override Type Type
+        {
+            get { return typeof(T); }
+        }
 
         //public EntityBaseRepository(IDbFactory<DbContext> dbFactory)
         //{
@@ -35,8 +48,6 @@ namespace CoachUs.Common.Data.Repositories
             get;
             private set;
         }
-
-
 
         protected DbContext DbContext
         {
@@ -114,9 +125,36 @@ namespace CoachUs.Common.Data.Repositories
             //DbContext.SaveChanges();
         }
 
-        public virtual void LoadReference(T entity, Expression<Func<T, object>> navigationProperty)
+        public virtual void LoadReference<TProperty>(T entity, Expression<Func<T, TProperty>> navigationProperty) where TProperty : class
         {
             DbContext.Entry<T>(entity).Reference(navigationProperty).Load();
+        }
+    }
+
+    public class EntityBaseRepositoryCollection
+    {
+        readonly IUnitOfWork unitOfWork = null;
+        private Dictionary<Type, BaseRepository> dictionary;
+
+        public EntityBaseRepositoryCollection(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+            dictionary = new Dictionary<Type, BaseRepository>();
+        }
+
+        public void Put<T>(EntityBaseRepository<T> item) where T : class, IEntityBase
+        {
+            dictionary[typeof(T)] = item;
+        }
+
+        public void Add<T>() where T : class, IEntityBase
+        {
+            dictionary[typeof(T)] = new EntityBaseRepository<T>(unitOfWork);
+        }
+
+        public EntityBaseRepository<T> Get<T>() where T : class, IEntityBase
+        {
+            return dictionary[typeof(T)] as EntityBaseRepository<T>;
         }
     }
 }

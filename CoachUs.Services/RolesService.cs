@@ -1,6 +1,6 @@
 ﻿using CoachUs.Common.Data.Infrastructure;
 using CoachUs.Common.Data.Services;
-using Microsoft.AspNet.Identity.EntityFramework;
+using CoachUs.Data.Entities;
 using System.Linq;
 
 namespace CoachUs.Services
@@ -13,12 +13,12 @@ namespace CoachUs.Services
 
         public IQueryable<IdentityRole> GetRoles()
         {
-            return repository.Get();
+            return MainRepository.Get();
         }
 
         public IdentityRole GetRole(string name)
         {
-            return repository.Get(i => i.Name == name).SingleOrDefault();
+            return MainRepository.Get(i => i.Name == name).SingleOrDefault();
         }
     }
 }

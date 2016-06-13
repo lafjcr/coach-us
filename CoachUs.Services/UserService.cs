@@ -32,7 +32,7 @@ namespace CoachUs.Services
             ICollection<UserModel> result = null;
             if (callerUserInfo.IsAdmin)
             {
-                result = repository.Get().ToList().ToModelList();
+                result = MainRepository.Get().ToList().ToModelList();
                 return result;
             }
             throw new UnauthorizedAccessException();
@@ -43,7 +43,7 @@ namespace CoachUs.Services
             UserModel result = null;
             if (callerUserInfo.IsAdmin || callerUserInfo.UserId == id)
             {
-                result = repository.GetById(id).ToModel();
+                result = MainRepository.GetById(id).ToModel();
                 return result;
             }
             throw new UnauthorizedAccessException();
@@ -67,7 +67,7 @@ namespace CoachUs.Services
                 entity.Email = entity.UserName;
                 entity.SecurityStamp = "9828d4db-cf13-49b9-a395-344bc00a5af4";
 
-                entity = repository.Insert(entity);
+                entity = MainRepository.Insert(entity);
                 Commit();
 
                 model = entity.ToModel();
@@ -82,11 +82,11 @@ namespace CoachUs.Services
             {
                 if (model == null)
                     throw new ArgumentNullException("model");
-                var entity = repository.GetById(model.Id);
+                var entity = MainRepository.GetById(model.Id);
                 if (entity == null)
                     throw new ObjectNotFoundException();
                 entity = model.ToEntity(entity);
-                repository.Update(entity);
+                MainRepository.Update(entity);
                 Commit();
             }
             else throw new UnauthorizedAccessException();
@@ -96,10 +96,10 @@ namespace CoachUs.Services
         {
             if (callerUserInfo.IsAdmin)
             {
-                var entity = repository.GetById(id);
+                var entity = MainRepository.GetById(id);
                 if (entity == null)
                     throw new ObjectNotFoundException();
-                repository.Delete(entity);
+                MainRepository.Delete(entity);
                 Commit();
             }
             else throw new UnauthorizedAccessException();
@@ -111,7 +111,7 @@ namespace CoachUs.Services
         {
             if (callerUserInfo.IsAdmin || callerUserInfo.UserId == id)
             {
-                var entity = repository.GetById(id);
+                var entity = MainRepository.GetById(id);
                 if (entity == null)
                     throw new ObjectNotFoundException();
 
@@ -133,13 +133,13 @@ namespace CoachUs.Services
             if (model.UserId != callerUserInfo.UserId)
                 throw new UnauthorizedAccessException();
 
-            var entity = repository.GetById(model.UserId);
+            var entity = MainRepository.GetById(model.UserId);
             if (entity == null)
                 throw new ObjectNotFoundException();
 
             entity.UserDetail = model.ToEntity(entity.UserDetail);
             entity.PhoneNumber = model.PhoneNumber;
-            repository.Update(entity);
+            MainRepository.Update(entity);
             Commit();
         }
         #endregion

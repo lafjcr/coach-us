@@ -1,8 +1,9 @@
-﻿using System;
+﻿using CoachUs.Common.Data;
+using System;
 
 namespace CoachUs.Data.Entities
 {
-    public class License
+    public class License : IEntityBase
     {
         public int Id { get; set; }
         public string OwnerId { get; set; }
