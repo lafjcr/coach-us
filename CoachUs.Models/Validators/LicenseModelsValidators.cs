@@ -18,7 +18,7 @@ namespace CoachUs.Models.Validators
     {
         public LicenseUpdateRequestModelValidator()
         {
-            RuleFor(r => r.Id).NotEmpty().NotEqual(0)
+            RuleFor(r => r.Id).NotEmpty().GreaterThan(0)
                 .WithMessage("Invalid Id");
 
             RuleFor(r => r.Active).NotEmpty()

@@ -65,13 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\LicensePackageExtensions.cs" />
     <Compile Include="Extensions\UserDetailExtensions.cs" />
     <Compile Include="Extensions\LicenseExtensions.cs" />
     <Compile Include="Extensions\UserExtensions.cs" />
+    <Compile Include="LicensePackageModels.cs" />
     <Compile Include="LicenseModels.cs" />
     <Compile Include="UserDetailModels.cs" />
     <Compile Include="UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\LicensePackageModelsValidators.cs" />
     <Compile Include="Validators\UserDetailModelValidator.cs" />
     <Compile Include="Validators\LicenseModelsValidators.cs" />
     <Compile Include="Validators\UserModelValidator.cs" />

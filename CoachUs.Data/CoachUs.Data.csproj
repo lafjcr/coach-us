@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoachUsContext.cs" />
+    <Compile Include="Configurations\LicensePackageConfiguration.cs" />
     <Compile Include="Configurations\LicenseConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
     <Compile Include="Configurations\UserDetailConfiguration.cs" />
@@ -73,6 +74,10 @@
     <Compile Include="Migrations\201606081742521_Create_Licenses.cs" />
     <Compile Include="Migrations\201606081742521_Create_Licenses.Designer.cs">
       <DependentUpon>201606081742521_Create_Licenses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606110026403_Create_LicensePackages.cs" />
+    <Compile Include="Migrations\201606110026403_Create_LicensePackages.Designer.cs">
+      <DependentUpon>201606110026403_Create_LicensePackages.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606081742521_Create_Licenses.resx">
       <DependentUpon>201606081742521_Create_Licenses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606110026403_Create_LicensePackages.resx">
+      <DependentUpon>201606110026403_Create_LicensePackages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

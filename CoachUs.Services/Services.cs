@@ -18,6 +18,7 @@ namespace CoachUs.Services
         IUsersService usersService = null;
         IRolesService rolesService = null;
         ILicenseService licensesService = null;
+        ILicensePackagesService licensesPackagesService = null;
 
         readonly CallerUserInfo callerUserInfo;
 
@@ -50,6 +51,14 @@ namespace CoachUs.Services
             get
             {
                 return licensesService ?? new LicensesService(callerUserInfo, unitOfWork);
+            }
+        }
+
+        public ILicensePackagesService LicensePackagesService
+        {
+            get
+            {
+                return licensesPackagesService ?? new LicensePackagesService(callerUserInfo, unitOfWork);
             }
         }
 

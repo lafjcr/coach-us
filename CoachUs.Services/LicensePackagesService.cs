@@ -10,19 +10,27 @@ using System.Linq;
 
 namespace CoachUs.Services
 {
-    class LicensesService : BaseService<License>, ILicenseService
+    class LicensePackagesService : BaseService<LicensePackage>, ILicensePackagesService
     {
         readonly CallerUserInfo callerUserInfo;
 
-        public LicensesService(CallerUserInfo callerUserInfo, IUnitOfWork unitOfWork) : base(unitOfWork)
+        public LicensePackagesService(CallerUserInfo callerUserInfo, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this.callerUserInfo = callerUserInfo;
-            AddRepository<LicensePackage>();
+            //AddRepository<LicensePackage>();
         }
 
-        public IEnumerable<LicenseResponseModel> GetLicenses()
+        //EntityBaseRepository<LicensePackage> LicensePackageRepository
+        //{
+        //    get
+        //    {
+        //        return Repository<LicensePackage>();
+        //    }
+        //}
+
+        public IEnumerable<LicensePackageResponseModel> GetLicensePackages()
         {
-            ICollection<LicenseResponseModel> result = null;
+            ICollection<LicensePackageResponseModel> result = null;
             if (callerUserInfo.IsAdmin)
             {
                 result = MainRepository.Get().ToList().ToModelList();
@@ -31,20 +39,9 @@ namespace CoachUs.Services
             throw new UnauthorizedAccessException();
         }
 
-        public IEnumerable<LicenseGroupedResponseModel> GetGroupedLicenses()
+        public LicensePackageResponseModel GetLicensePackage(int id)
         {
-            ICollection<LicenseGroupedResponseModel> result = null;
-            if (callerUserInfo.IsAdmin)
-            {
-                result = MainRepository.Get().GroupBy(i => i.Owner).ToList().ToModelList();
-                return result;
-            }
-            throw new UnauthorizedAccessException();
-        }
-
-        public LicenseResponseModel GetLicense(int id)
-        {
-            LicenseResponseModel result = null;
+            LicensePackageResponseModel result = null;
             if (callerUserInfo.IsAdmin)
             {
                 result = MainRepository.GetById(id).ToModel();
@@ -53,23 +50,18 @@ namespace CoachUs.Services
             throw new UnauthorizedAccessException();
         }
 
-        public LicenseResponseModel AddLicense(LicenseCreateRequestModel model, IUsersService userService)
+        public LicensePackageResponseModel AddLicensePackage(LicensePackageCreateRequestModel model)
         {
             if (callerUserInfo.IsAdmin)
             {
                 if (model == null)
                     throw new ArgumentNullException("model");
 
-                var user = userService.GetUserDetails(model.OwnerId);
-                if (user == null)
-                    throw new ArgumentException("Invalid Owner Id");
-
                 var entity = model.ToEntity();
-                entity.CreatedDate = DateTime.UtcNow;
+                entity.CreatedDate = entity.ModifiedDate = DateTime.UtcNow;
 
                 entity = MainRepository.Insert(entity);
                 Commit();
-                MainRepository.LoadReference(entity, e => e.Owner);
 
                 var result = entity.ToModel();
                 return result;
@@ -77,7 +69,7 @@ namespace CoachUs.Services
             throw new UnauthorizedAccessException();
         }
 
-        public void UpdateLicense(LicenseUpdateRequestModel model)
+        public void UpdateLicensePackage(LicensePackageUpdateRequestModel model)
         {
             if (callerUserInfo.IsAdmin)
             {
@@ -89,7 +81,22 @@ namespace CoachUs.Services
                     throw new ObjectNotFoundException();
 
                 entity = model.ToEntity(entity);
+                entity.ModifiedDate = DateTime.UtcNow;
+
                 MainRepository.Update(entity);
+                Commit();
+            }
+            else throw new UnauthorizedAccessException();
+        }
+
+        public void DeleteLicensePackage(int id)
+        {
+            if (callerUserInfo.IsAdmin)
+            {
+                var entity = MainRepository.GetById(id);
+                if (entity == null)
+                    throw new ObjectNotFoundException();
+                MainRepository.Delete(entity);
                 Commit();
             }
             else throw new UnauthorizedAccessException();

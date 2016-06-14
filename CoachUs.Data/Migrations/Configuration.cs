@@ -21,6 +21,7 @@ namespace CoachUs.Data.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
+            #region Roles
             var adminRole = new Role
             {
                 Id = "24c0707d-65cb-4132-8bf5-4553867807c0",
@@ -44,7 +45,9 @@ namespace CoachUs.Data.Migrations
                   Name = "Athlete"
               }
             );
+            #endregion
 
+            #region Admin User
             var adminUser = new User
             {
                 Id = "1080a6a5-7f49-43b5-a74b-b8b19858e615",
@@ -63,6 +66,79 @@ namespace CoachUs.Data.Migrations
                     RoleId = adminRole.Id
                 }
             );
+            #endregion
+
+            #region Licenses Packages
+            var dateTimeNow = DateTime.UtcNow;
+            var licensePackage = new LicensePackage()
+            {
+                Id = 1,
+                Name = "CUTRIAL",
+                Users = 25,
+                MinUsers = 0,
+                MaxUsers = 25,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackages.AddOrUpdate(licensePackage);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackage = new LicensePackage()
+            {
+                Id = 2,
+                Name = "CU50",
+                Users = 25,
+                MinUsers = 0,
+                MaxUsers = 50,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackages.AddOrUpdate(licensePackage);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackage = new LicensePackage()
+            {
+                Id = 3,
+                Name = "CU100",
+                Users = 25,
+                MinUsers = 51,
+                MaxUsers = 100,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackages.AddOrUpdate(licensePackage);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackage = new LicensePackage()
+            {
+                Id = 4,
+                Name = "CU150",
+                Users = 25,
+                MinUsers = 101,
+                MaxUsers = 150,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackages.AddOrUpdate(licensePackage);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackage = new LicensePackage()
+            {
+                Id = 5,
+                Name = "CUN",
+                Users = 25,
+                MinUsers = 151,
+                MaxUsers = 1000,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackages.AddOrUpdate(licensePackage);
+            #endregion
         }
     }
 }
