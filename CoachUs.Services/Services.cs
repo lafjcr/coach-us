@@ -1,14 +1,7 @@
 ﻿using CoachUs.Common.Data.Infrastructure;
-using CoachUs.Common.Data.Repositories;
 using CoachUs.Data;
-using CoachUs.Data.Entities;
 using CoachUs.Data.Infrastructure;
-using CoachUs.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoachUs.Services
 {
@@ -19,6 +12,7 @@ namespace CoachUs.Services
         IRolesService rolesService = null;
         ILicenseService licensesService = null;
         ILicensePackagesService licensesPackagesService = null;
+        ILicensePackagePricesService licensesPackagePricesService = null;
 
         readonly CallerUserInfo callerUserInfo;
 
@@ -59,6 +53,14 @@ namespace CoachUs.Services
             get
             {
                 return licensesPackagesService ?? new LicensePackagesService(callerUserInfo, unitOfWork);
+            }
+        }
+
+        public ILicensePackagePricesService LicensePackagePricesService
+        {
+            get
+            {
+                return licensesPackagePricesService ?? new LicensePackagePricesService(callerUserInfo, unitOfWork);
             }
         }
 

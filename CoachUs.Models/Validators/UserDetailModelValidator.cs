@@ -22,7 +22,7 @@ namespace CoachUs.Models.Validators
             RuleFor(r => r.Gender).IsInEnum()
                 .WithMessage("Invalid Gender");
 
-            RuleFor(r => r.Laterality).NotEmpty()
+            RuleFor(r => r.Laterality).IsInEnum()
                 .WithMessage("Invalid Laterality");
 
             RuleFor(r => r.Country).NotEmpty()

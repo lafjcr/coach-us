@@ -10,29 +10,29 @@ using System.Linq;
 
 namespace CoachUs.Services
 {
-    class LicensePackagesService : BaseService<LicensePackage>, ILicensePackagesService
+    class LicensePackagePricesService : BaseService<LicensePackagePrice>, ILicensePackagePricesService
     {
         readonly CallerUserInfo callerUserInfo;
 
-        public LicensePackagesService(CallerUserInfo callerUserInfo, IUnitOfWork unitOfWork) : base(unitOfWork)
+        public LicensePackagePricesService(CallerUserInfo callerUserInfo, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             this.callerUserInfo = callerUserInfo;
         }
 
-        public IEnumerable<LicensePackageResponseModel> GetLicensePackages()
+        public IEnumerable<LicensePackagePriceResponseModel> GetLicensePackagePrices(int licensePackageId)
         {
-            ICollection<LicensePackageResponseModel> result = null;
+            ICollection<LicensePackagePriceResponseModel> result = null;
             if (callerUserInfo.IsAdmin)
             {
-                result = MainRepository.Get().ToList().ToModelList();
+                result = MainRepository.Get(i => i.LicensePackageId == licensePackageId).ToList().ToModelList();
                 return result;
             }
             throw new UnauthorizedAccessException();
         }
 
-        public LicensePackageResponseModel GetLicensePackage(int id)
+        public LicensePackagePriceResponseModel GetLicensePackagePrice(int id)
         {
-            LicensePackageResponseModel result = null;
+            LicensePackagePriceResponseModel result = null;
             if (callerUserInfo.IsAdmin)
             {
                 result = MainRepository.GetById(id).ToModel();
@@ -41,7 +41,7 @@ namespace CoachUs.Services
             throw new UnauthorizedAccessException();
         }
 
-        public LicensePackageResponseModel AddLicensePackage(LicensePackageCreateRequestModel model)
+        public LicensePackagePriceResponseModel AddLicensePackagePrice(LicensePackagePriceCreateRequestModel model)
         {
             if (callerUserInfo.IsAdmin)
             {
@@ -60,7 +60,7 @@ namespace CoachUs.Services
             throw new UnauthorizedAccessException();
         }
 
-        public void UpdateLicensePackage(LicensePackageUpdateRequestModel model)
+        public void UpdateLicensePackagePrice(LicensePackagePriceUpdateRequestModel model)
         {
             if (callerUserInfo.IsAdmin)
             {
@@ -80,7 +80,7 @@ namespace CoachUs.Services
             else throw new UnauthorizedAccessException();
         }
 
-        public void DeleteLicensePackage(int id)
+        public void DeleteLicensePackagePrice(int id)
         {
             if (callerUserInfo.IsAdmin)
             {

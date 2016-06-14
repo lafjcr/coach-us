@@ -6,44 +6,42 @@ using System.Linq;
 
 namespace CoachUs.Models
 {
-    public class LicensePackageBaseModel
+    public class LicensePackagePriceBaseModel
     {
-        public string Name { get; set; }
-        public int Users { get; set; }
-        public int MinUsers { get; set; }
-        public int MaxUsers { get; set; }
+        public int Months { get; set; }
+        public decimal Price{ get; set; }
         public bool Active { get; set; }
     }
 
-    public class LicensePackageCreateRequestModel : LicensePackageBaseModel, IValidatableObject
+    public class LicensePackagePriceCreateRequestModel : LicensePackagePriceBaseModel, IValidatableObject
     {
+        public int LicensePackageId { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var validator = new LicensePackageCreateRequestModelValidator();
+            var validator = new LicensePackagePriceCreateRequestModelValidator();
             var result = validator.Validate(this);
             return result.Errors.Select(item => new ValidationResult(item.ErrorMessage, new[] { item.PropertyName }));
         }
     }
 
-    public class LicensePackageUpdateRequestModel : IValidatableObject
+    public class LicensePackagePriceUpdateRequestModel : IValidatableObject
     {
         public int Id { get; set; }
         public bool Active { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            var validator = new LicensePackageUpdateRequestModelValidator();
+            var validator = new LicensePackagePriceUpdateRequestModelValidator();
             var result = validator.Validate(this);
             return result.Errors.Select(item => new ValidationResult(item.ErrorMessage, new[] { item.PropertyName }));
         }
     }
 
-    public class LicensePackageResponseModel : LicensePackageBaseModel
+    public class LicensePackagePriceResponseModel : LicensePackagePriceBaseModel
     {
         public int Id { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
-
-        public IEnumerable<LicensePackagePriceResponseModel> Prices { get; set; }
     }
 }

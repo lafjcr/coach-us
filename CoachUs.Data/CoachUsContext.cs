@@ -19,6 +19,7 @@ namespace CoachUs.Data
         public IDbSet<IdentityUserRole> UserRoles { get; set; }
         public IDbSet<License> Licenses { get; set; }
         public IDbSet<LicensePackage> LicensePackages { get; set; }
+        public IDbSet<LicensePackagePrice> LicensePackagePrices { get; set; }
 
         public virtual void Commit()
         {
@@ -38,6 +39,7 @@ namespace CoachUs.Data
 
             modelBuilder.Configurations.Add(new UserDetailConfiguration());
             modelBuilder.Configurations.Add(new LicensePackageConfiguration());
+            modelBuilder.Configurations.Add(new LicensePackagePriceConfiguration());
             modelBuilder.Configurations.Add(new LicenseConfiguration());
         }
     }

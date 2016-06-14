@@ -14,6 +14,7 @@ namespace CoachUs.Data.Configurations
             Property(u => u.MaxUsers).IsRequired();
             Property(u => u.Active).IsRequired();
             Property(u => u.CreatedDate).IsRequired();
+            Property(u => u.ModifiedDate).IsRequired();
         }
     }
 }

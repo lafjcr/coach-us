@@ -3,9 +3,7 @@ namespace CoachUs.Data.Migrations
     using Entities;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<CoachUs.Data.CoachUsContext>
     {
@@ -68,7 +66,7 @@ namespace CoachUs.Data.Migrations
             );
             #endregion
 
-            #region Licenses Packages
+            #region Licenses Packages and Prices
             var dateTimeNow = DateTime.UtcNow;
             var licensePackage = new LicensePackage()
             {
@@ -82,6 +80,20 @@ namespace CoachUs.Data.Migrations
                 ModifiedDate = dateTimeNow
             };
             context.LicensePackages.AddOrUpdate(licensePackage);
+
+            dateTimeNow = DateTime.UtcNow;
+            var licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 3,
+                Price = 0,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+
 
             dateTimeNow = DateTime.UtcNow;
             licensePackage = new LicensePackage()
@@ -98,6 +110,56 @@ namespace CoachUs.Data.Migrations
             context.LicensePackages.AddOrUpdate(licensePackage);
 
             dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 1,
+                Price = 50,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 3,
+                Price = 45,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 6,
+                Price = 42.5M,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 12,
+                Price = 40,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+
+
+            dateTimeNow = DateTime.UtcNow;
             licensePackage = new LicensePackage()
             {
                 Id = 3,
@@ -110,6 +172,56 @@ namespace CoachUs.Data.Migrations
                 ModifiedDate = dateTimeNow
             };
             context.LicensePackages.AddOrUpdate(licensePackage);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 1,
+                Price = 45,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 3,
+                Price = 40.5M,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 6,
+                Price = 38.25M,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 12,
+                Price = 36,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+
 
             dateTimeNow = DateTime.UtcNow;
             licensePackage = new LicensePackage()
@@ -126,6 +238,56 @@ namespace CoachUs.Data.Migrations
             context.LicensePackages.AddOrUpdate(licensePackage);
 
             dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 1,
+                Price = 42.5M,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 3,
+                Price = 38.25M,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 6,
+                Price = 36.13M,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 12,
+                Price = 34,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+
+
+            dateTimeNow = DateTime.UtcNow;
             licensePackage = new LicensePackage()
             {
                 Id = 5,
@@ -138,6 +300,54 @@ namespace CoachUs.Data.Migrations
                 ModifiedDate = dateTimeNow
             };
             context.LicensePackages.AddOrUpdate(licensePackage);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 1,
+                Price = 40,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 3,
+                Price = 36,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 6,
+                Price = 34,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
+
+            dateTimeNow = DateTime.UtcNow;
+            licensePackagePrice = new LicensePackagePrice()
+            {
+                LicensePackageId = licensePackage.Id,
+                Months = 12,
+                Price = 32,
+                Active = true,
+                CreatedDate = dateTimeNow,
+                ModifiedDate = dateTimeNow
+            };
+            context.LicensePackagePrices.AddOrUpdate(licensePackagePrice);
             #endregion
         }
     }

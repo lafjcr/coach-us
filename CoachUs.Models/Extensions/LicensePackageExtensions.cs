@@ -16,6 +16,7 @@ namespace CoachUs.Models
             result.Id = entity.Id;
             result.CreatedDate = entity.CreatedDate;
             result.ModifiedDate = entity.ModifiedDate;
+            result.Prices = entity.LicensePackagePrices.ToModelList();
 
             return result;
         }

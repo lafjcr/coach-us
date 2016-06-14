@@ -60,6 +60,7 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="License.cs" />
     <Compile Include="LicensePackage.cs" />
+    <Compile Include="LicensePackagePrice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="User.cs" />

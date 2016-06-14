@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoachUsContext.cs" />
+    <Compile Include="Configurations\LicensePackagePriceConfiguration.cs" />
     <Compile Include="Configurations\LicensePackageConfiguration.cs" />
     <Compile Include="Configurations\LicenseConfiguration.cs" />
     <Compile Include="Configurations\UserConfiguration.cs" />
@@ -78,6 +79,10 @@
     <Compile Include="Migrations\201606110026403_Create_LicensePackages.cs" />
     <Compile Include="Migrations\201606110026403_Create_LicensePackages.Designer.cs">
       <DependentUpon>201606110026403_Create_LicensePackages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606141801092_Create_LicensePackagePrices.cs" />
+    <Compile Include="Migrations\201606141801092_Create_LicensePackagePrices.Designer.cs">
+      <DependentUpon>201606141801092_Create_LicensePackagePrices.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606110026403_Create_LicensePackages.resx">
       <DependentUpon>201606110026403_Create_LicensePackages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606141801092_Create_LicensePackagePrices.resx">
+      <DependentUpon>201606141801092_Create_LicensePackagePrices.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

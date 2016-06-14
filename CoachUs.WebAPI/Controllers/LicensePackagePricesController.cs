@@ -6,33 +6,15 @@ using System.Web.Http;
 
 namespace CoachUs.WebAPI.Controllers
 {
-    [RoutePrefix("LicensePackages")]
-    public class LicensePackagesController : CoachUsController
+    [RoutePrefix("LicensePackagePrices")]
+    public class LicensePackagePricesController : CoachUsController
     {
-        // GET: api/LicensePackages
-        public IHttpActionResult Get()
-        {
-            try
-            {
-                var result = CoachUsServices.LicensePackagesService.GetLicensePackages();
-                return Ok(result);
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
-
-        // GET: api/LicensePackages/5
+        // GET: api/LicensePackagePrices/5
         public IHttpActionResult Get(int id)
         {
             try
             {
-                var result = CoachUsServices.LicensePackagesService.GetLicensePackage(id);
+                var result = CoachUsServices.LicensePackagePricesService.GetLicensePackagePrice(id);
                 return Ok(result);
             }
             catch (UnauthorizedAccessException)
@@ -49,31 +31,12 @@ namespace CoachUs.WebAPI.Controllers
             }
         }
 
-        // GET: api/LicensePackages/5/Prices
-        [Route("~/api/LicensePackages/{id}/Prices")]
-        public IHttpActionResult GetPrices(int id)
+        // POST: api/LicensePackagePrices
+        public IHttpActionResult Post([FromBody]LicensePackagePriceCreateRequestModel model)
         {
             try
             {
-                var result = CoachUsServices.LicensePackagePricesService.GetLicensePackagePrices(id);
-                return Ok(result);
-            }
-            catch (UnauthorizedAccessException)
-            {
-                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
-            }
-            catch (Exception ex)
-            {
-                return InternalServerError(ex);
-            }
-        }
-
-        // POST: api/LicensePackages
-        public IHttpActionResult Post([FromBody]LicensePackageCreateRequestModel model)
-        {
-            try
-            {
-                var result = CoachUsServices.LicensePackagesService.AddLicensePackage(model);
+                var result = CoachUsServices.LicensePackagePricesService.AddLicensePackagePrice(model);
                 return Ok(result);
             }
             catch (UnauthorizedAccessException)
@@ -94,13 +57,13 @@ namespace CoachUs.WebAPI.Controllers
             }
         }
 
-        // PUT: api/LicensePackages/5
-        public IHttpActionResult Put(int id, [FromBody]LicensePackageUpdateRequestModel model)
+        // PUT: api/LicensePackagePrices/5
+        public IHttpActionResult Put(int id, [FromBody]LicensePackagePriceUpdateRequestModel model)
         {
             try
             {
                 model.Id = id;
-                CoachUsServices.LicensePackagesService.UpdateLicensePackage(model);
+                CoachUsServices.LicensePackagePricesService.UpdateLicensePackagePrice(model);
                 return Ok();
             }
             catch (UnauthorizedAccessException)
@@ -121,12 +84,12 @@ namespace CoachUs.WebAPI.Controllers
             }
         }
 
-        // DELETE: api/LicensePackages/5
+        // DELETE: api/LicensePackagePrices/5
         public IHttpActionResult Delete(int id)
         {
             try
             {
-                CoachUsServices.LicensePackagesService.DeleteLicensePackage(id);
+                CoachUsServices.LicensePackagePricesService.DeleteLicensePackagePrice(id);
                 return Ok();
             }
             catch (UnauthorizedAccessException)
