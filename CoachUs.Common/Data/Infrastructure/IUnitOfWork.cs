@@ -7,5 +7,6 @@ namespace CoachUs.Common.Data.Infrastructure
     {
         DbContext DbContext { get; }
         void Commit();
+        DbContextTransaction BeginTransaction();
     }
 }

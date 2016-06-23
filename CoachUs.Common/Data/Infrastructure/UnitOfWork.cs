@@ -24,6 +24,11 @@ namespace CoachUs.Common.Data.Infrastructure
             DbContext.SaveChanges();
         }
 
+        public DbContextTransaction BeginTransaction()
+        {
+            return DbContext.Database.BeginTransaction();
+        }
+
         public void Dispose()
         {
             dbFactory.Dispose();

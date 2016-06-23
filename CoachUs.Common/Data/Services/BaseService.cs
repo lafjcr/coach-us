@@ -1,6 +1,7 @@
 ﻿using CoachUs.Common.Data.Infrastructure;
 using CoachUs.Common.Data.Repositories;
 using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace CoachUs.Common.Data.Services
 {
@@ -44,6 +45,11 @@ namespace CoachUs.Common.Data.Services
         protected void Commit()
         {
             unitOfWork.Commit();
+        }
+
+        protected DbContextTransaction BeginTransaction()
+        {
+            return unitOfWork.BeginTransaction();
         }
     }
 }
