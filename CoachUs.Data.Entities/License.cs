@@ -1,5 +1,6 @@
 ﻿using CoachUs.Common.Data;
 using System;
+using System.Collections.Generic;
 
 namespace CoachUs.Data.Entities
 {
@@ -11,5 +12,6 @@ namespace CoachUs.Data.Entities
         public DateTime CreatedDate{ get; set; }
 
         public virtual UserDetail Owner { get; set; }
+        public virtual ICollection<LicensePaymentOrder> LicensePaymentOrders { get; set; }
     }
 }

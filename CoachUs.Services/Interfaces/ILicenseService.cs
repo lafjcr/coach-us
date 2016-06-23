@@ -8,7 +8,10 @@ namespace CoachUs.Services
         IEnumerable<LicenseResponseModel> GetLicenses();
         IEnumerable<LicenseGroupedResponseModel> GetGroupedLicenses();
         LicenseResponseModel GetLicense(int id);
-        LicenseResponseModel AddLicense(LicenseCreateRequestModel model, IUsersService userService);
+        LicenseCreatedResponseModel AddLicense(LicenseCreateRequestModel model, IUsersService userService);
         void UpdateLicense(LicenseUpdateRequestModel model);
+        void DeleteLicense(int id);
+        void PayLicense(int id, LicensePaymentOrderPayModel model);
+        void ConfirmPayment(int licensedId, int paymentId);
     }
 }

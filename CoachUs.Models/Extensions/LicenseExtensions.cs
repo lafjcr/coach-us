@@ -57,6 +57,16 @@ namespace CoachUs.Models
             return entities.Select(item => new LicenseGroupedResponseModel() { Owner = item.Key.ToReferenceModel(), Licenses = item.ToList().ToBaseModelList() }).ToList();
         }
 
+        public static LicenseCreatedResponseModel ToCreateModel(this License entity, LicenseCreatedResponseModel result = null)
+        {
+            if (entity == null) return null;
+            result = result ?? new LicenseCreatedResponseModel();
+
+            result = entity.ToBaseModel(result as LicenseBaseResponseModel) as LicenseCreatedResponseModel;
+
+            return result;
+        }
+
         public static License ToEntity(this LicenseCreateRequestModel model, License result = null)
         {
             if (model == null) return null;

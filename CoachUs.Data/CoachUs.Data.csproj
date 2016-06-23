@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoachUsContext.cs" />
+    <Compile Include="Configurations\LicensePaymentOrderConfiguration.cs" />
     <Compile Include="Configurations\LicensePackagePriceConfiguration.cs" />
     <Compile Include="Configurations\LicensePackageConfiguration.cs" />
     <Compile Include="Configurations\LicenseConfiguration.cs" />
@@ -83,6 +84,10 @@
     <Compile Include="Migrations\201606141801092_Create_LicensePackagePrices.cs" />
     <Compile Include="Migrations\201606141801092_Create_LicensePackagePrices.Designer.cs">
       <DependentUpon>201606141801092_Create_LicensePackagePrices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606212356236_Create_LicensePaymentOrders.cs" />
+    <Compile Include="Migrations\201606212356236_Create_LicensePaymentOrders.Designer.cs">
+      <DependentUpon>201606212356236_Create_LicensePaymentOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606141801092_Create_LicensePackagePrices.resx">
       <DependentUpon>201606141801092_Create_LicensePackagePrices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606212356236_Create_LicensePaymentOrders.resx">
+      <DependentUpon>201606212356236_Create_LicensePaymentOrders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

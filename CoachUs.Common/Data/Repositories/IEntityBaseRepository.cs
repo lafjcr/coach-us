@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -14,5 +15,6 @@ namespace CoachUs.Common.Data.Repositories
         void Update(T entity);
         void Delete(T entity);
         void LoadReference<TProperty>(T entity, Expression<Func<T, TProperty>> navigationProperty) where TProperty : class;
+        void LoadCollection<TElement>(T entity, Expression<Func<T, ICollection<TElement>>> navigationProperty) where TElement : class;
     }
 }

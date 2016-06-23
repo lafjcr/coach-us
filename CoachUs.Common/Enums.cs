@@ -11,4 +11,13 @@
         Right = 'R',
         Left = 'L'
     }
+
+    public enum PaymentType
+    {
+        None = 'N',
+        Cash = 'C',
+        Deposit = 'D',
+        Paypal = 'P',
+        Card = 'K'
+    }
 }

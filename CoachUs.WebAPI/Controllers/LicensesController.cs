@@ -109,5 +109,81 @@ namespace CoachUs.WebAPI.Controllers
                 return InternalServerError(ex);
             }
         }
+
+        // DELETE: api/Licenses/5
+        public IHttpActionResult Delete(int id)
+        {
+            try
+            {
+                CoachUsServices.LicensesService.DeleteLicense(id);
+                return Ok();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (ObjectNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        // POST: api/Licenses/5/Pay
+        [Route("~/api/Licenses/{id}/Pay")]
+        public IHttpActionResult Pay(int id, [FromBody]LicensePaymentOrderPayModel model)
+        {
+            try
+            {
+                CoachUsServices.LicensesService.PayLicense(id, model);
+                return Ok();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (ArgumentException)
+            {
+                return BadRequest();
+            }
+            catch (ObjectNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        // POST: api/Licenses/5/ConfirmPayment/7
+        [Route("~/api/Licenses/{id}/ConfirmPayment/{paymentId}")]
+        public IHttpActionResult ConfirmPayment(int id, [FromUri]int paymentId)
+        {
+            try
+            {
+                CoachUsServices.LicensesService.ConfirmPayment(id, paymentId);
+                return Ok();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (ArgumentException)
+            {
+                return BadRequest();
+            }
+            catch (ObjectNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
     }
 }

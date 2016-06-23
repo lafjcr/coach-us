@@ -129,6 +129,11 @@ namespace CoachUs.Common.Data.Repositories
         {
             DbContext.Entry<T>(entity).Reference(navigationProperty).Load();
         }
+
+        public virtual void LoadCollection<TElement>(T entity, Expression<Func<T, ICollection<TElement>>> navigationProperty) where TElement : class
+        {
+            DbContext.Entry<T>(entity).Collection(navigationProperty).Load();
+        }
     }
 
     public class EntityBaseRepositoryCollection

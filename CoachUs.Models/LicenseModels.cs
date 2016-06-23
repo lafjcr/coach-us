@@ -10,6 +10,8 @@ namespace CoachUs.Models
     {
         public string OwnerId { get; set; }
         public bool Active { get; set; }
+        public int LicensePackagePriceId { get; set; }
+        public int Users { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
@@ -42,6 +44,11 @@ namespace CoachUs.Models
     public class LicenseResponseModel : LicenseBaseResponseModel
     {
         public UserDetailReferenceResponseModel Owner { get; set; }
+    }
+
+    public class LicenseCreatedResponseModel : LicenseBaseResponseModel
+    {
+        public LicensePaymentOrderResponseModel PaymentOrder { get; set; }
     }
 
     public class LicenseGroupedResponseModel

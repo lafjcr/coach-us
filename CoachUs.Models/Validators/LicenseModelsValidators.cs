@@ -11,6 +11,12 @@ namespace CoachUs.Models.Validators
 
             RuleFor(r => r.Active).NotEmpty()
                 .WithMessage("Invalid Active");
+
+            RuleFor(r => r.LicensePackagePriceId).NotEmpty().GreaterThan(0)
+                .WithMessage("Invalid License Package Price Id");
+
+            RuleFor(r => r.Users).NotEmpty().GreaterThan(0)
+                .WithMessage("Invalid Users");
         }
     }
 
