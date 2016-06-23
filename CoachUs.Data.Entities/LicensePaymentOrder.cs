@@ -11,16 +11,18 @@ namespace CoachUs.Data.Entities
         public int Users { get; set; }
         public decimal UnitAmount { get; set; }
         public decimal TotalAmount { get; set; }
-        public DateTime PaidDate { get; set; }
+        public Nullable<DateTime> PaidDate { get; set; }
         public string PaymentType { get; set; }
         public string PaymentReference { get; set; }
         public bool PaymentConfirmed { get; set; }
 
-        public PaymentType PaymentTypeValue
+        public Nullable<PaymentType> PaymentTypeValue
         {
             get
             {
-                return (PaymentType)PaymentType[0];
+                if (PaymentType != null)
+                    return (PaymentType)PaymentType[0];
+                return null;
             }
             set
             {

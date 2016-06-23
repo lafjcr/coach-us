@@ -153,8 +153,13 @@ namespace CoachUs.Services
                 if (paymentOrder == null)
                     throw new ObjectNotFoundException();
 
+                if (paymentOrder.PaidDate != null)
+                    throw new InvalidOperationException("The Payment Order is already paid.");
+
                 paymentOrder = model.ToEntity(paymentOrder);
-                paymentOrder.ModifiedDate = paymentOrder.PaidDate = DateTime.UtcNow;
+                var dateNow = DateTime.UtcNow;
+                paymentOrder.ModifiedDate = dateNow;
+                paymentOrder.PaidDate = dateNow;
                 LicensePaymentOrderRepository.Update(paymentOrder);
                 Commit();
             }
@@ -172,6 +177,9 @@ namespace CoachUs.Services
                 var paymentOrder = entity.LicensePaymentOrders.SingleOrDefault(i => i.Id == paymentId);
                 if (paymentOrder == null)
                     throw new ObjectNotFoundException();
+
+                if (paymentOrder.PaymentConfirmed)
+                    throw new InvalidOperationException("The Payment Order is already confirmed.");
 
                 paymentOrder.PaymentConfirmed = true;
                 paymentOrder.ModifiedDate = DateTime.UtcNow;
@@ -196,15 +204,19 @@ namespace CoachUs.Services
             if (licensePackagePrice == null)
                 throw new ArgumentException("Invalid License Package Price Id");
 
+            if (!ValidUsers(users, licensePackagePrice.LicensePackage))
+                throw new ArgumentException("Invalid License Users");
+
             var dateNow = DateTime.UtcNow;
+            var unitAmount = licensePackagePrice.Price * licensePackagePrice.Months;
             var result = new LicensePaymentOrder()
             {
                 LicenseId = licenseId,
                 LicensePackagePrice = licensePackagePrice,
                 Qty = users / licensePackagePrice.LicensePackage.Users,
                 Users = users,
-                UnitAmount = licensePackagePrice.Price,
-                TotalAmount = users / licensePackagePrice.LicensePackage.Users * licensePackagePrice.Price,
+                UnitAmount = unitAmount,
+                TotalAmount = users / licensePackagePrice.LicensePackage.Users * unitAmount,
                 CreatedDate = dateNow,
                 ModifiedDate = dateNow
             };
@@ -215,6 +227,15 @@ namespace CoachUs.Services
                 result.PaymentConfirmed = true;
             }
             return result;
+        }
+
+        private bool ValidUsers(int users, LicensePackage licensePackage)
+        {
+            if (users % licensePackage.Users == 0
+                    && users > licensePackage.MinUsers
+                    && users < licensePackage.MaxUsers)
+                return true;
+            return false;
         }
     }
 }

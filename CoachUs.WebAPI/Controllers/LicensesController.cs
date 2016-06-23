@@ -153,6 +153,10 @@ namespace CoachUs.WebAPI.Controllers
             {
                 return NotFound();
             }
+            catch (InvalidOperationException)
+            {
+                return Conflict();
+            }
             catch (Exception ex)
             {
                 return InternalServerError(ex);
@@ -179,6 +183,10 @@ namespace CoachUs.WebAPI.Controllers
             catch (ObjectNotFoundException)
             {
                 return NotFound();
+            }
+            catch (InvalidOperationException)
+            {
+                return Conflict();
             }
             catch (Exception ex)
             {
