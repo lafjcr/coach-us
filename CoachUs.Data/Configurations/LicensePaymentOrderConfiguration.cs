@@ -10,9 +10,11 @@ namespace CoachUs.Data.Configurations
             HasKey(e => e.Id);
             Property(u => u.LicenseId).IsRequired();
             Property(u => u.LicensePackagePriceId).IsRequired();
+            Property(u => u.PaymentOrderType).IsRequired().HasMaxLength(1).IsFixedLength().IsUnicode(false);
             Property(u => u.Qty).IsRequired();
             Property(u => u.Users).IsRequired();
             Property(u => u.UnitAmount).IsRequired();
+            Property(u => u.UpgradeCredit).IsRequired();
             Property(u => u.TotalAmount).IsRequired();
             Property(u => u.PaidDate).IsOptional();
             Property(u => u.PaymentType).IsOptional().HasMaxLength(1).IsFixedLength().IsUnicode(false);
@@ -23,6 +25,7 @@ namespace CoachUs.Data.Configurations
 
             HasRequired(u => u.License).WithMany(ur => ur.LicensePaymentOrders).HasForeignKey(k => k.LicenseId);
 
+            Ignore(u => u.PaymentOrderTypeValue);
             Ignore(u => u.PaymentTypeValue);
         }
     }

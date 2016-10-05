@@ -82,6 +82,7 @@
     <Compile Include="Data\Infrastructure\UnitOfWork.cs" />
     <Compile Include="Data\Repositories\EntityBaseRepository.cs" />
     <Compile Include="Data\Repositories\IEntityBaseRepository.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

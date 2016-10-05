@@ -31,4 +31,22 @@ namespace CoachUs.Models.Validators
                 .WithMessage("Invalid Active");
         }
     }
+
+    internal class LicenseChangeRequestModelValidator : AbstractValidator<LicenseChangeRequestModel>
+    {
+        public LicenseChangeRequestModelValidator()
+        {
+            RuleFor(r => r.Id).NotEmpty().GreaterThan(0)
+                .WithMessage("Invalid Id");
+
+            RuleFor(r => r.LicensePackagePriceId).NotEmpty().GreaterThan(0)
+                .WithMessage("Invalid License Package Price Id");
+
+            RuleFor(r => r.Users).NotEmpty().GreaterThan(0)
+                .WithMessage("Invalid Users");
+
+            RuleFor(r => r.Now).NotEmpty()
+                .WithMessage("Invalid Now");
+        }
+    }
 }

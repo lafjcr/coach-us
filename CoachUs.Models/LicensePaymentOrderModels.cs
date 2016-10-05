@@ -57,6 +57,7 @@ public class LicensePaymentOrderResponseModel//: LicensePackagePriceBaseModel
         public int Qty { get; set; }
         public int Users { get; set; }
         public decimal UnitAmount { get; set; }
+        public decimal UpgradeCredit { get; set; }
         public decimal TotalAmount { get; set; }
         public Nullable<DateTime> PaidDate { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]

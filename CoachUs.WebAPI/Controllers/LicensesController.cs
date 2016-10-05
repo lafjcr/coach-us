@@ -193,5 +193,68 @@ namespace CoachUs.WebAPI.Controllers
                 return InternalServerError(ex);
             }
         }
+
+        // POST: api/Licenses/5/Renew
+        [Route("~/api/Licenses/{id}/Renew")]
+        public IHttpActionResult Renew(int id)
+        {
+            try
+            {
+                CoachUsServices.LicensesService.Renew(id);
+                return Ok();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (ArgumentException)
+            {
+                return BadRequest();
+            }
+            catch (ObjectNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (InvalidOperationException)
+            {
+                return Conflict();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        // POST: api/Licenses/5/ChangeLicense
+        [Route("~/api/Licenses/{id}/ChangeLicense")]
+        public IHttpActionResult ChangeLicense(int id, LicenseChangeRequestModel model)
+        {
+            try
+            {
+                model.Id = id;
+                CoachUsServices.LicensesService.ChangeLicense(model);
+                return Ok();
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return StatusCode(System.Net.HttpStatusCode.Unauthorized);
+            }
+            catch (ArgumentException)
+            {
+                return BadRequest();
+            }
+            catch (ObjectNotFoundException)
+            {
+                return NotFound();
+            }
+            catch (InvalidOperationException)
+            {
+                return Conflict();
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
     }
 }

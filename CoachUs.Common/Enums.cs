@@ -12,6 +12,14 @@
         Left = 'L'
     }
 
+    public enum PaymentOrderType
+    {
+        New = 'N',
+        Renew = 'R',
+        Upgrade = 'U',
+        UpgradeRenew = 'Y'
+    }
+
     public enum PaymentType
     {
         None = 'N',

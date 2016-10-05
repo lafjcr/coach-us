@@ -19,6 +19,7 @@ namespace CoachUs.Models
             result.Qty = entity.Qty;
             result.Users = entity.Users;
             result.UnitAmount = entity.UnitAmount;
+            result.UpgradeCredit = entity.UpgradeCredit;
             result.TotalAmount = entity.TotalAmount;
             result.PaidDate = entity.PaidDate;
             result.PaymentType = entity.PaymentTypeValue;

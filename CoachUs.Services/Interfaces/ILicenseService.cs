@@ -13,5 +13,7 @@ namespace CoachUs.Services
         void DeleteLicense(int id);
         void PayLicense(int id, LicensePaymentOrderPayModel model);
         void ConfirmPayment(int licensedId, int paymentId);
+        void Renew(int id);
+        void ChangeLicense(LicenseChangeRequestModel model);
     }
 }

@@ -34,6 +34,21 @@ namespace CoachUs.Models
         }
     }
 
+    public class LicenseChangeRequestModel : IValidatableObject
+    {
+        public int Id { get; set; }
+        public int LicensePackagePriceId { get; set; }
+        public int Users { get; set; }
+        public bool Now { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var validator = new LicenseChangeRequestModelValidator();
+            var result = validator.Validate(this);
+            return result.Errors.Select(item => new ValidationResult(item.ErrorMessage, new[] { item.PropertyName }));
+        }
+    }
+
     public class LicenseBaseResponseModel
     {
         public int Id { get; set; }
