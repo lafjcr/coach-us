@@ -9,13 +9,17 @@ namespace CoachUs.Data.Configurations
         {
             HasKey(e => e.Id);
             Property(u => u.LicenseId).IsRequired();
-            Property(u => u.LicensePackageId).IsRequired();
+            Property(u => u.LicensePackagePriceId).IsRequired();
+            Property(u => u.LicensePaymentOrderId).IsRequired();
             Property(u => u.MaxUsers).IsRequired();
             Property(u => u.StartDate).IsRequired();
             Property(u => u.ExpirationDate).IsRequired();
             Property(u => u.CreatedDate).IsRequired();
+            Property(u => u.ModifiedDate).IsRequired();
 
-            Ignore(u => u.ModifiedDate);
+            HasRequired(u => u.License).WithMany(ur => ur.LicenseHistories).HasForeignKey(k => k.LicenseId);
+
+            HasRequired(u => u.LicensePaymentOrder).WithMany().WillCascadeOnDelete(false);
         }
     }
 }

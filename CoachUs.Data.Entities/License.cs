@@ -13,5 +13,6 @@ namespace CoachUs.Data.Entities
 
         public virtual UserDetail Owner { get; set; }
         public virtual ICollection<LicensePaymentOrder> LicensePaymentOrders { get; set; }
+        public virtual ICollection<LicenseHistory> LicenseHistories { get; set; }
     }
 }

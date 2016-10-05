@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoachUsContext.cs" />
+    <Compile Include="Configurations\LicenseHistoryConfiguration.cs" />
     <Compile Include="Configurations\LicensePaymentOrderConfiguration.cs" />
     <Compile Include="Configurations\LicensePackagePriceConfiguration.cs" />
     <Compile Include="Configurations\LicensePackageConfiguration.cs" />
@@ -88,6 +89,18 @@
     <Compile Include="Migrations\201606212356236_Create_LicensePaymentOrders.cs" />
     <Compile Include="Migrations\201606212356236_Create_LicensePaymentOrders.Designer.cs">
       <DependentUpon>201606212356236_Create_LicensePaymentOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606241611352_Create_LicenseHistories.cs" />
+    <Compile Include="Migrations\201606241611352_Create_LicenseHistories.Designer.cs">
+      <DependentUpon>201606241611352_Create_LicenseHistories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607081626236_Change_LicensePaymentOrders.cs" />
+    <Compile Include="Migrations\201607081626236_Change_LicensePaymentOrders.Designer.cs">
+      <DependentUpon>201607081626236_Change_LicensePaymentOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201607082308148_Change_LicenseHistories.cs" />
+    <Compile Include="Migrations\201607082308148_Change_LicenseHistories.Designer.cs">
+      <DependentUpon>201607082308148_Change_LicenseHistories.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +137,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606212356236_Create_LicensePaymentOrders.resx">
       <DependentUpon>201606212356236_Create_LicensePaymentOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606241611352_Create_LicenseHistories.resx">
+      <DependentUpon>201606241611352_Create_LicenseHistories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607081626236_Change_LicensePaymentOrders.resx">
+      <DependentUpon>201607081626236_Change_LicensePaymentOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201607082308148_Change_LicenseHistories.resx">
+      <DependentUpon>201607082308148_Change_LicenseHistories.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

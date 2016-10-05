@@ -43,6 +43,7 @@ namespace CoachUs.Data
             modelBuilder.Configurations.Add(new LicensePackagePriceConfiguration());
             modelBuilder.Configurations.Add(new LicenseConfiguration());
             modelBuilder.Configurations.Add(new LicensePaymentOrderConfiguration());
+            modelBuilder.Configurations.Add(new LicenseHistoryConfiguration());
         }
     }
 }
